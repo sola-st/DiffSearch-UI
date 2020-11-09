@@ -1,0 +1,38 @@
+@import "./../../theme";
+.accent {
+  color: $accent !important;
+}
+
+.info {
+  font-weight:bold;
+  margin: 10px;
+}
+
+table {
+  width: 100%;
+  background-color: transparent !important;
+}
+
+.word-breakall {
+  word-break: break-word !important;
+}
+
+.old {
+  color: brown;
+}
+
+.new {
+  color: forestgreen;
+}
+ .link {
+  background-color: transparent !important;
+ }
+
+.paginator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+  }
+

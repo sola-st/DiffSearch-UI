@@ -1,0 +1,43 @@
+@import "./../theme";
+
+.active {
+  font-weight: bold;
+  color: $primary !important;
+  background-color: rgba($primary, 0.12) !important;
+}
+
+.toolbar {
+  position: relative;
+  z-index: 1;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+span {
+  // color: $accent !important;
+  color: $primary !important;
+  background-color: white;
+}
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: 24px;
+}
+
+.sidenav {
+  width: 65%;
+  min-width: 250px;
+  max-width: 350px;
+}
+
+.stretch {
+  flex-grow: 1;
+}

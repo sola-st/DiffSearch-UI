@@ -1,0 +1,42 @@
+@import "./../../theme";
+
+.ds-content {
+  margin: 10px 10px;
+}
+
+.language-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.language-margin {
+   margin: 0 10px;
+}
+
+.accent {
+  color: $accent !important;
+}
+
+.query-section {
+  display: flex;
+  align-content: center;
+  //align-items: center;
+  // height: 400px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+// .text {
+//   background-color: rgba($primary, 0.12) !important;
+// }
+
+.example {
+  min-width: unset!important;
+  margin: 2px;
+}
+
+

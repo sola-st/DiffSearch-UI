@@ -1,0 +1,65 @@
+<div class="ds-content">
+<section class="language-section">
+  <label>Languages:</label>
+  <mat-radio-group [(ngModel)]="selectedLanguage"#radioGroup2="matRadioGroup">
+    <mat-radio-button class="language-margin" *ngFor="let language of languages"
+    [value]="language">
+      {{language}}
+    </mat-radio-button>
+  </mat-radio-group>
+</section>
+<!-- <div>radio group ngModel: {{ selectedLanguage}}</div>
+<div>radio group value: {{ radioGroup2.value }}</div> -->
+<p>Insert your query for matching
+  <span class="accent">{{ radioGroup2.value }}</span> code changes</p>
+<section class="query-section">
+<!-- first textarea-->
+<mat-form-field appearance="fill">
+  <mat-label>Insert the old code...</mat-label>
+  <textarea class="text" [(ngModel)]="oldcontent"
+  matInput
+  cdkTextareaAutosize
+  cdkAutosizeMinRows="1"
+  cdkAutosizeMaxRows="8">
+</textarea>
+</mat-form-field>
+<!-- Arrow - Search Action-->
+<div class="button-container">
+  <button mat-mini-fab color="accent" aria-label="arrow right"
+    matTooltip="Search" (click)="onSearchClick(oldcontent, newcontent)"
+    [disabled]="!(oldcontent && newcontent)">
+    <mat-icon>east</mat-icon>
+  </button>
+</div>
+<!-- <p>{{!(oldcontent && newcontent)}}</p> -->
+<!-- second textarea-->
+<mat-form-field appearance="fill">
+  <mat-label>Insert the new code...</mat-label>
+  <textarea [(ngModel)]="newcontent"
+  matInput
+  cdkTextareaAutosize
+  cdkAutosizeMinRows="1"
+  cdkAutosizeMaxRows="8">
+</textarea>
+</mat-form-field>
+</section>
+
+<!-- Examples -->
+<p>Examples:</p>
+<button mat-flat-button color="primary" class="example"
+  *ngFor="let ex of examples; let i = index"
+   matTooltip="{{ex.query}}"
+   [matTooltipPosition]="'above'"
+   (click)="onExampleClick(i)">
+   {{i + 1}}
+</button>
+<!-- <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Examples </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Here are some queries examples.</p>
+
+  </mat-expansion-panel>
+</mat-accordion> -->
+</div>
