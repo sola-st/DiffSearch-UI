@@ -22,7 +22,7 @@ export class QueryService {
   getResult(queryold: string, querynew: string): void{
     console.log('in getResult');
     this.getQueryResult(queryold, querynew)
-    .subscribe(rd => { this.resultdata = rd });
+    .subscribe(rd => { this.resultdata = rd; });
     // console.log ('url ' + this.resultdata[0].url);
   }
 
@@ -71,7 +71,7 @@ export class QueryService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.log ('in handleError')
+      console.log ('in handleError');
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
