@@ -1,4 +1,5 @@
-<div class="info">
+<!-- {{dataSource.data.length}} -->
+<div class="info" *ngIf="dataSource.data.length">
   (<span class="accent">Max 10</span>) Code changes found in <span class="accent" >xxxx seconds</span> using a data set of
   <span class="accent">nnn code changes</span>:
 </div>
@@ -12,8 +13,8 @@
 <!-- <p>Tabelle</p> -->
 <!-- <div class="mat-elevation-z8"> -->
 <div class="example-table-container">
-  <table mat-table [dataSource]="dataSource">
-  <!-- <mat-table [dataSource]="dataSource"> -->
+  <!-- <table mat-table [dataSource]="dataSource"> -->
+  <table mat-table [dataSource]=getData()>
 
     <!-- Old Column -->
     <ng-container matColumnDef="old">
@@ -22,7 +23,7 @@
       <!-- <mat-header-cell *matHeaderCellDef> </mat-header-cell>
       <mat-cell *matCellDef="let element"> -->
         <!-- -<span class="old">{{element.oldentry}}</span> -->
-        -<span class="old">{{element.codechangesold}}</span>
+        -<span class="old">{{element.codeChange_old}}</span>
         <!-- -{{element.codechangesold}} -->
       </td>
     </ng-container>
@@ -44,7 +45,7 @@
       <!-- <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element"> -->
         <!-- +<span class="new">{{element.newentry}}</span> -->
-        +<span class="new">{{element.codechangesnew}}</span>
+        +<span class="new">{{element.codeChange_new}}</span>
       </td>
     </ng-container>
     <!-- Link Column -->
@@ -55,7 +56,7 @@
       <!--<mat-cell *matCellDef="let element"> -->
         <!-- <mat-icon matTooltip="{{element.link}}"> -->
         <a class = "link" mat-flat-button href="{{element.url}}" target="_blank">
-          <mat-icon matTooltip="{{element.hunklines}}">
+          <mat-icon matTooltip="{{element.hunk_lines}}">
             open_in_new
           </mat-icon>
         </a>
@@ -69,8 +70,5 @@
   </table>
   <!-- </mat-table> -->
 
-  <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  <!-- Test-->
-
-<!-- </div> -->
+  <mat-paginator class="paginator" [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="dataSource.data.length"></mat-paginator>
 

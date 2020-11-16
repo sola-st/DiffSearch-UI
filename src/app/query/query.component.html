@@ -1,7 +1,7 @@
 <div class="ds-content">
 <section class="language-section">
   <label>Languages:</label>
-  <mat-radio-group [(ngModel)]="selectedLanguage"#radioGroup2="matRadioGroup">
+  <mat-radio-group [(ngModel)]="selectedLanguage"#radioGroup="matRadioGroup">
     <mat-radio-button class="language-margin" *ngFor="let language of languages"
     [value]="language">
       {{language}}
@@ -9,9 +9,9 @@
   </mat-radio-group>
 </section>
 <!-- <div>radio group ngModel: {{ selectedLanguage}}</div>
-<div>radio group value: {{ radioGroup2.value }}</div> -->
+<div>radio group value: {{ radioGroup.value }}</div> -->
 <p>Insert your query for matching
-  <span class="accent">{{ radioGroup2.value }}</span> code changes</p>
+  <span class="accent">{{ radioGroup.value }}</span> code changes</p>
 <section class="query-section">
 <!-- first textarea-->
 <mat-form-field appearance="fill">
@@ -23,15 +23,17 @@
   cdkAutosizeMaxRows="8">
 </textarea>
 </mat-form-field>
-<!-- Arrow - Search Action-->
-<div class="button-container">
+<!-- Arrow -->
+<!-- <div class="button-container">
   <button mat-mini-fab color="accent" aria-label="arrow right"
     matTooltip="Search" (click)="onSearchClick(oldcontent, newcontent)"
     [disabled]="!(oldcontent && newcontent)">
     <mat-icon>east</mat-icon>
   </button>
+</div> -->
+<div class="button-container">
+  <mat-icon aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
 </div>
-<!-- <p>{{!(oldcontent && newcontent)}}</p> -->
 <!-- second textarea-->
 <mat-form-field appearance="fill">
   <mat-label>Insert the new code...</mat-label>
@@ -43,7 +45,14 @@
 </textarea>
 </mat-form-field>
 </section>
-
+<!-- search button-->
+<div id="search-btn">
+  <button mat-raised-button color="accent"
+    matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent)"
+    [disabled]="!(oldcontent && newcontent)">
+    search
+  </button>
+</div>
 <!-- Examples -->
 <p>Examples:</p>
 <button mat-flat-button color="primary" class="example"
