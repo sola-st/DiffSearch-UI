@@ -18,8 +18,17 @@ export class NavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, @Inject(DOCUMENT) private document: Document) {}
+    isMobile = false;
+
+  constructor(private breakpointObserver: BreakpointObserver, @Inject(DOCUMENT) private document: Document) {
+    breakpointObserver.observe([
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      this.isMobile = result.matches;
+    });
+  }
   // constructor(private breakpointObserver: BreakpointObserver) {}
+
   toggleTheme(): void {
     this.document.body.classList.toggle('dark-theme');
   }

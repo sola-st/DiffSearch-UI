@@ -1,7 +1,7 @@
 <div class="ds-content">
 <section class="language-section">
   <label>Languages:</label>
-  <mat-radio-group [(ngModel)]="selectedLanguage"#radioGroup="matRadioGroup">
+  <mat-radio-group [(ngModel)]="selectedLanguage" #radioGroup="matRadioGroup">
     <mat-radio-button class="language-margin" *ngFor="let language of languages"
     [value]="language">
       {{language}}
@@ -11,16 +11,17 @@
 <!-- <div>radio group ngModel: {{ selectedLanguage}}</div>
 <div>radio group value: {{ radioGroup.value }}</div> -->
 <p>Insert your query for matching
-  <span class="accent">{{ radioGroup.value }}</span> code changes</p>
-<section class="query-section">
-<!-- first textarea-->
+  <span class="accent">{{ radioGroup.value }}</span> code changes
+</p>
+<!-- {{isMobile}} -->
+<section class="query-section" *ngIf="(!isMobile); else mobile_template">
 <mat-form-field appearance="fill">
   <mat-label>Insert the old code...</mat-label>
   <textarea class="text" [(ngModel)]="oldcontent"
-  matInput
-  cdkTextareaAutosize
-  cdkAutosizeMinRows="1"
-  cdkAutosizeMaxRows="8">
+    matInput
+    cdkTextareaAutosize
+    cdkAutosizeMinRows="1"
+    cdkAutosizeMaxRows="8">
 </textarea>
 </mat-form-field>
 <!-- Arrow -->
@@ -31,21 +32,46 @@
     <mat-icon>east</mat-icon>
   </button>
 </div> -->
-<div class="button-container">
-  <mat-icon aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
+<div class="arrow">
+  <mat-icon class="east" aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
 </div>
 <!-- second textarea-->
 <mat-form-field appearance="fill">
   <mat-label>Insert the new code...</mat-label>
   <textarea [(ngModel)]="newcontent"
-  matInput
-  cdkTextareaAutosize
-  cdkAutosizeMinRows="1"
-  cdkAutosizeMaxRows="8">
+    matInput
+    cdkTextareaAutosize
+    cdkAutosizeMinRows="1"
+    cdkAutosizeMaxRows="8">
 </textarea>
 </mat-form-field>
 </section>
-<!-- search button-->
+<ng-template #mobile_template id="mobile">
+  <div class="mobile-content">
+  <mat-form-field appearance="fill" class="mobile-field">
+    <mat-label>Insert the old code...</mat-label>
+    <textarea class="text" [(ngModel)]="oldcontent"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="8">
+  </textarea>
+  </mat-form-field>
+  <div class="arrow">
+    <mat-icon class="east" aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
+  </div>
+  <!-- second textarea-->
+  <mat-form-field appearance="fill" class="mobile-field">
+    <mat-label>Insert the new code...</mat-label>
+    <textarea [(ngModel)]="newcontent"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="8">
+  </textarea>
+  </mat-form-field>
+</div>
+</ng-template>
 <div id="search-btn">
   <button mat-raised-button color="accent"
     matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent)"
@@ -54,14 +80,27 @@
   </button>
 </div>
 <!-- Examples -->
-<p>Examples:</p>
-<button mat-flat-button color="primary" class="example"
+<!-- <p>Examples:</p>
+<button mat-raised-button color="primary" class="example"
   *ngFor="let ex of examples; let i = index"
    matTooltip="{{ex.query}}"
    [matTooltipPosition]="'above'"
    (click)="onExampleClick(i)">
    {{i + 1}}
-</button>
+</button> -->
+<section class="examples-section">
+  <p>Examples:</p>
+  <!-- <label>Examples:</label> -->
+  <mat-radio-group #radioGroup="matRadioGroup">
+    <mat-radio-button class="example" color="primary" *ngFor="let ex of examples; let i = index"
+      [value]="ex"
+      matTooltip="{{ex.query}}"
+      [matTooltipPosition]="'above'"
+      (click)="onExampleClick(i)">
+      {{i + 1}}
+    </mat-radio-button>
+  </mat-radio-group>
+</section>
 <!-- <mat-accordion>
   <mat-expansion-panel>
     <mat-expansion-panel-header>

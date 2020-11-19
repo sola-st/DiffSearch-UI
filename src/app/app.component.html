@@ -26,9 +26,16 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>&nbsp;Diff&nbsp;</span>Search: A Scalable and Precise Search Engine for Code Changes
+        <div *ngIf="(!isMobile); else mobile_template">
+          <span>&nbsp;Diff&nbsp;</span>Search: A Scalable and Precise Search Engine for Code Changes
+        </div>
+        <ng-template #mobile_template>
+          <div class="mobile"><span>&nbsp;Diff&nbsp;</span>Search:<br>
+            A Scalable and Precise Search Engine <br> for Code Changes
+          </div>
+        </ng-template>
       </mat-toolbar-row>
-      <mat-toolbar-row>
+      <mat-toolbar-row class="last-row">
         <div class="stretch"></div>
         <a mat-button routerLink="about">About</a>
         <button class="theme-button" (click)="toggleTheme()" mat-icon-button>

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
   selector: 'ds-root',
@@ -9,7 +10,15 @@ import { DOCUMENT } from '@angular/common';
 export class AppComponent {
   title = 'diffsearch';
 
-   constructor(@Inject(DOCUMENT) private document: Document) {}
+  public isMobile = false;
+
+  constructor(@Inject(DOCUMENT) private document: Document, private breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe([
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      this.isMobile = result.matches;
+    });
+  }
 
   toggleTheme(): void {
     this.document.body.classList.toggle('dark-theme');

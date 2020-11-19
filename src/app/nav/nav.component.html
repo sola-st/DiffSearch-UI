@@ -32,9 +32,15 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>&nbsp;DIFF&nbsp;</span>SEARCH: A Scalable and Precise Search Engine for Code Changes
+          <span *ngIf="(!isMobile); else mobile_template"><span class="white-background">&nbsp;DIFF&nbsp;</span>
+          SEARCH: A Scalable and Precise Search Engine for Code Changes</span>
+          <ng-template #mobile_template>
+            <span class="mobile"><span class="white-background">&nbsp;Diff&nbsp;</span>Search:<br>
+              A Scalable and Precise Search Engine <br> for Code Changes
+            </span>
+          </ng-template>
       </mat-toolbar-row>
-      <mat-toolbar-row>
+      <mat-toolbar-row class="last-row">
         <div class="stretch"></div>
         <a mat-button routerLink="about">About</a>
         <button class="theme-button" (click)="toggleTheme()" mat-icon-button>

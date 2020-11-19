@@ -14,7 +14,7 @@
 }
 
 
-span {
+.white-background {
   color: $primary !important;
   background-color: white;
 }
@@ -27,4 +27,12 @@ span {
 
 .stretch {
   flex-grow: 1;
+}
+
+.mobile {
+  padding-top: 40px;
+}
+
+.last-row {
+  padding-top: 30px;
 }
