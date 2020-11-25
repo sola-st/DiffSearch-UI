@@ -10,8 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-// import { MatGridListModule } from '@angular/material/grid-list';
-// import { MatRadioModule } from '@angular/material/radio';
+import { MatGridListModule } from '@angular/material/grid-list';
 // import { FormsModule } from '@angular/forms';
 
 import { DiffsearchComponent } from './diffsearch/diffsearch.component';
@@ -28,6 +27,7 @@ import { ResultComponent } from './result/result.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -55,8 +55,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
-    // MatGridListModule
+    HttpClientModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

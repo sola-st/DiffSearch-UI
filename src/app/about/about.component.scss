@@ -1,0 +1,38 @@
+@import "./../../theme";
+.about {
+  margin: 50px 10px;
+  width: 80%;
+}
+
+#primary {
+  color : $primary;
+}
+
+#authors_h2 {
+  text-align: center;
+  width: 80%;
+}
+
+// .authors {
+//   display: flex;
+//   justify-content: center;
+//   width: 80%;
+//   border-color: lightskyblue;
+//   border: solid;
+// }
+
+.auths{
+  width: 80%;
+}
+
+#author {
+  background-color: transparent !important;
+}
+
+.header-image {
+  background-size: cover;
+}
+
+a {
+ color: $primary !important;
+}

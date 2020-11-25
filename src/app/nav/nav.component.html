@@ -32,17 +32,31 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-          <span *ngIf="(!isMobile); else mobile_template"><span class="white-background">&nbsp;DIFF&nbsp;</span>
-          SEARCH: A Scalable and Precise Search Engine for Code Changes</span>
+        <a class = "toolbar-link" routerLink="diffsearch">
+          <div *ngIf="(!isMobile); else mobile_template"><span class="white-background">&nbsp;DIFF&nbsp;</span>
+            SEARCH: A Scalable and Precise Search Engine for Code Changes
+          </div>
           <ng-template #mobile_template>
-            <span class="mobile"><span class="white-background">&nbsp;Diff&nbsp;</span>Search:<br>
+            <div class="mobile"><span>&nbsp;Diff&nbsp;</span>Search:<br>
               A Scalable and Precise Search Engine <br> for Code Changes
-            </span>
+            </div>
           </ng-template>
+        </a>
       </mat-toolbar-row>
       <mat-toolbar-row class="last-row">
         <div class="stretch"></div>
-        <a mat-button routerLink="about">About</a>
+        <button mat-button>
+          <mat-icon>code</mat-icon>
+          <a class = "toolbar-link" href ="#">Source</a>
+        </button>
+        <button mat-button>
+          <mat-icon>text_snippet</mat-icon>
+          <a class = "toolbar-link" href ="#">Paper</a>
+        </button>
+        <a mat-button routerLink="about">
+          <mat-icon>info</mat-icon>
+          About
+        </a>
         <button class="theme-button" (click)="toggleTheme()" mat-icon-button>
           <mat-icon>invert_colors</mat-icon>
         </button>

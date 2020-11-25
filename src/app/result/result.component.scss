@@ -17,15 +17,25 @@ table {
   word-break: break-word !important;
 }
 
-.old {
-  // color: brown;
+// .old {
+//   // color: brown;
+//   color: red;
+// }
+
+// .new {
+//   // color: forestgreen;
+//   color: green
+// }
+.minus {
   color: red;
+  font-weight:bold;
 }
 
-.new {
-  // color: forestgreen;
-  color: green
+.plus {
+  color: green;
+  font-weight:bold;
 }
+
  .link {
   background-color: transparent !important;
  }
