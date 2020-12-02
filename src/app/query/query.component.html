@@ -1,29 +1,47 @@
 <div class="ds-content">
-<section class="language-section">
-  <label>Languages:</label>
-  <mat-radio-group [(ngModel)]="selectedLanguage" #radioGroup="matRadioGroup">
-    <mat-radio-button class="language-margin" *ngFor="let language of languages"
-    [value]="language">
-      {{language}}
-    </mat-radio-button>
-  </mat-radio-group>
-</section>
+  <section class="language-section">
+    <label>Languages:</label>
+    <mat-radio-group [(ngModel)]="selectedLanguage" #radioGroup="matRadioGroup">
+      <mat-radio-button class="language-margin" *ngFor="let language of languages"
+      [value]="language">
+        {{language}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </section>
 <!-- <div>radio group ngModel: {{ selectedLanguage}}</div>
 <div>radio group value: {{ radioGroup.value }}</div> -->
-<p>Insert your query for matching
-  <span class="accent">{{ radioGroup.value }}</span> code changes
-</p>
+  <p>Insert your query for matching
+    <span class="accent">{{ radioGroup.value }}</span> code changes
+    <button mat-button (click)="toggle()" matTooltip="{{info}} grammar of queries" color="primary">
+      <mat-icon>info</mat-icon>
+    </button>
+  </p>
+  <!-- show Grammar of queries -->
+  <ng-container *ngIf="show">
+    <mat-card class="grammar-card">
+      <mat-card-content>
+        <table class = "mat-capture">
+          <tr><td>Grammar of queries:</td></tr>
+          <tr  *ngFor="let rule of querygrammar">
+            <td style="font-style:italic">{{rule.nt}}</td>
+            <td>{{rule.symbol}}</td>
+            <td>{{rule.tn}}<span style="font-style:italic">{{rule.ti}}</span></td>
+          </tr>
+        </table>
+    </mat-card-content>
+    </mat-card>
+  </ng-container>
 <!-- {{isMobile}} -->
-<section class="query-section" *ngIf="(!isMobile); else mobile_template">
-<mat-form-field appearance="fill">
-  <mat-label>Insert the old code...</mat-label>
-  <textarea class="text" [(ngModel)]="oldcontent"
-    matInput
-    cdkTextareaAutosize
-    cdkAutosizeMinRows="1"
-    cdkAutosizeMaxRows="8">
-</textarea>
-</mat-form-field>
+  <section class="query-section" *ngIf="(!isMobile); else mobile_template">
+  <mat-form-field appearance="fill">
+    <mat-label>Insert the old code...</mat-label>
+    <textarea class="text" [(ngModel)]="oldcontent"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="8">
+    </textarea>
+  </mat-form-field>
 <!-- Arrow -->
 <!-- <div class="button-container">
   <button mat-mini-fab color="accent" aria-label="arrow right"
@@ -32,53 +50,53 @@
     <mat-icon>east</mat-icon>
   </button>
 </div> -->
-<div class="arrow">
-  <mat-icon class="east" aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
-</div>
-<!-- second textarea-->
-<mat-form-field appearance="fill">
-  <mat-label>Insert the new code...</mat-label>
-  <textarea [(ngModel)]="newcontent"
-    matInput
-    cdkTextareaAutosize
-    cdkAutosizeMinRows="1"
-    cdkAutosizeMaxRows="8">
-</textarea>
-</mat-form-field>
-</section>
-<ng-template #mobile_template id="mobile">
-  <div class="mobile-content">
-  <mat-form-field appearance="fill" class="mobile-field">
-    <mat-label>Insert the old code...</mat-label>
-    <textarea class="text" [(ngModel)]="oldcontent"
-      matInput
-      cdkTextareaAutosize
-      cdkAutosizeMinRows="1"
-      cdkAutosizeMaxRows="8">
-  </textarea>
-  </mat-form-field>
   <div class="arrow">
     <mat-icon class="east" aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
   </div>
   <!-- second textarea-->
-  <mat-form-field appearance="fill" class="mobile-field">
+  <mat-form-field appearance="fill">
     <mat-label>Insert the new code...</mat-label>
-    <textarea [(ngModel)]="newcontent"
+    <textarea class="text" [(ngModel)]="newcontent"
       matInput
       cdkTextareaAutosize
       cdkAutosizeMinRows="1"
       cdkAutosizeMaxRows="8">
   </textarea>
   </mat-form-field>
-</div>
-</ng-template>
-<div id="search-btn">
-  <button mat-raised-button color="accent"
-    matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent)"
-    [disabled]="!(oldcontent && newcontent)">
-    search
-  </button>
-</div>
+  </section>
+  <ng-template #mobile_template id="mobile">
+    <div class="mobile-content">
+    <mat-form-field appearance="fill" class="mobile-field">
+      <mat-label>Insert the old code...</mat-label>
+      <textarea class="text" [(ngModel)]="oldcontent"
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="8">
+      </textarea>
+    </mat-form-field>
+    <div class="arrow">
+      <mat-icon class="east" aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
+    </div>
+    <!-- second textarea-->
+    <mat-form-field appearance="fill" class="mobile-field">
+      <mat-label>Insert the new code...</mat-label>
+      <textarea class="text" [(ngModel)]="newcontent"
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="8">
+      </textarea>
+    </mat-form-field>
+  </div>
+  </ng-template>
+  <div id="search-btn">
+    <button mat-raised-button color="accent"
+      matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent)"
+      [disabled]="!(oldcontent && newcontent)">
+      search
+    </button>
+  </div>
 <!-- Examples -->
 <!-- <p>Examples:</p>
 <button mat-raised-button color="primary" class="example"
@@ -88,19 +106,19 @@
    (click)="onExampleClick(i)">
    {{i + 1}}
 </button> -->
-<section class="examples-section">
-  <p>Examples:</p>
-  <!-- <label>Examples:</label> -->
-  <mat-radio-group #radioGroup="matRadioGroup">
-    <mat-radio-button class="example" color="primary" *ngFor="let ex of examples; let i = index"
-      [value]="ex"
-      matTooltip="{{ex.query}}"
-      [matTooltipPosition]="'above'"
-      (click)="onExampleClick(i)">
-      {{i + 1}}
-    </mat-radio-button>
-  </mat-radio-group>
-</section>
+  <section class="examples-section">
+    <p>Examples:</p>
+    <!-- <label>Examples:</label> -->
+    <mat-radio-group #radioGroup="matRadioGroup">
+      <mat-radio-button class="example" color="primary" *ngFor="let ex of examples; let i = index"
+        [value]="ex"
+        matTooltip="{{ex.query}}"
+        [matTooltipPosition]="'above'"
+        (click)="onExampleClick(i)">
+        {{i + 1}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </section>
 <!-- <mat-accordion>
   <mat-expansion-panel>
     <mat-expansion-panel-header>

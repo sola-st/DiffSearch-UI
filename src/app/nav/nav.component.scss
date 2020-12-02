@@ -13,7 +13,6 @@
   width: 200px;
 }
 
-
 .white-background {
   color: $primary !important;
   background-color: white;
@@ -34,8 +33,13 @@
   flex-grow: 1;
 }
 
+.content {
+  padding: 2%;
+}
+
 .mobile {
   padding-top: 40px;
+  line-height: 1.2;
 }
 
 .last-row {

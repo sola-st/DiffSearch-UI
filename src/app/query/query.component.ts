@@ -4,7 +4,8 @@ import { ExampleService } from '../example.service';
 import { Example } from '../examples';
 
 import { QueryService } from '../query.service';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { Grammar, GRAMMAR} from '../grammar';
 
 @Component({
   selector: 'ds-query',
@@ -24,9 +25,15 @@ export class QueryComponent implements OnInit {
   oldcontent: string;
   newcontent: string;
 
+  public show = false;
+  public info: any = 'Show';
+  querygrammar: Grammar[] = GRAMMAR;
 
-  constructor(private exampleService: ExampleService,
-    private queryService: QueryService, private breakpointObserver: BreakpointObserver) {
+
+  constructor(
+    private exampleService: ExampleService,
+    private queryService: QueryService,
+    private breakpointObserver: BreakpointObserver) {
   // constructor(private grid: MatGridList, private breakpointObserver: BreakpointObserver,
   //   private exampleService: ExampleService, private queryService: QueryService) {
     breakpointObserver.observe([
@@ -50,5 +57,15 @@ export class QueryComponent implements OnInit {
   onSearchClick(oldstring: string, newstring: string): void {
     this.queryService.getResult(oldstring, newstring);
   }
+  toggle(): void {
+    this.show = !this.show;
 
+    // change the tooltip info
+    if (this.show) {
+      this.info = 'Hide';
+    }
+    else {
+      this.info = 'Show';
+    }
+  }
 }

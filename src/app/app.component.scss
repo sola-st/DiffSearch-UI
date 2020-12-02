@@ -29,12 +29,12 @@ span {
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
-  padding: 24px;
+  padding: 2%;
 }
 
 .sidenav {
-  width: 65%;
-  min-width: 250px;
+  width: 60%;
+  min-width: 200px;
   max-width: 350px;
 }
 
@@ -49,6 +49,7 @@ span {
 
 .mobile {
   padding-top: 40px;
+  line-height: 1.2;
 }
 
 .last-row {

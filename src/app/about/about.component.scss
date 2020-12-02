@@ -1,6 +1,9 @@
 @import "./../../theme";
+.about-content{
+  margin:auto
+}
+
 .about {
-  margin: 50px 10px;
   width: 80%;
 }
 
@@ -8,7 +11,7 @@
   color : $primary;
 }
 
-#authors_h2 {
+.mat-h1 {
   text-align: center;
   width: 80%;
 }

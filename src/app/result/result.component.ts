@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {ResultData} from '../resultdata';
 import { QueryService } from '../query.service';
-import { getLocaleDateFormat } from '@angular/common';
+// import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'ds-result',
