@@ -13,8 +13,8 @@ export const EXAMPLES: Example[] = [
   { query: 'Same function, more arguments', old: 'ID<0>();', new: 'ID<0>(<...>);'},
   { query: 'Same function, less arguments', old: 'ID<0>(ID);', new: 'ID<0>();'},
   { query: 'Same function, swap arguments', old: 'ID<2>(ID<1>, ID<0>)', new: 'ID<2>(ID<0>, ID<1>)'},
-  { query: 'Changes unary operator', old: 'ID<0>(<...>) unOP;', new: 'ID<0>(<...>) unOP;'},
-  { query: 'Changes binary operator', old: 'EXPR binOP<0> EXPR', new: 'EXPR binOP<0> EXPR'},
+  { query: 'Change unary operator', old: 'ID<0>(<...>) unOP;', new: 'ID<0>(<...>) unOP;'},
+  { query: 'Change binary operand', old: 'EXPR binOP<0> EXPR', new: 'EXPR binOP<0> EXPR'},
   { query: 'Missing throw exception', old: '<...> ID(<...>) {', new: '<...> ID(<...>) throws ID {'},
   { query: 'Delete throw exception', old: '<...> ID(<...>) throws ID {', new: '<...> ID(<...>) {'},
 ];

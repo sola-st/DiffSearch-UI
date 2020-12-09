@@ -13,7 +13,8 @@ $warn-palette: mat-palette($mat-red);
 $theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
 $dark-theme: mat-dark-theme($primary-palette, $accent-palette, $warn-palette);
 
-// Create $primary variable for easy
-// use of the primary colour in variant 500
+// Create $primary, $accent, $warn variables for easy
+// use of the primary colour, accent colour, warn colour in variant 500
 $primary: mat-color($primary-palette);
 $accent: mat-color($accent-palette);
+$warn: mat-color($warn-palette);

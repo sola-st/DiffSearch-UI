@@ -25,7 +25,7 @@ export class QueryComponent implements OnInit {
   oldcontent: string;
   newcontent: string;
 
-  public show = false;
+  public showGrammar = false;
   public info: any = 'Show';
   querygrammar: Grammar[] = GRAMMAR;
 
@@ -57,11 +57,12 @@ export class QueryComponent implements OnInit {
   onSearchClick(oldstring: string, newstring: string): void {
     this.queryService.getResult(oldstring, newstring);
   }
+
   toggle(): void {
-    this.show = !this.show;
+    this.showGrammar = !this.showGrammar;
 
     // change the tooltip info
-    if (this.show) {
+    if (this.showGrammar) {
       this.info = 'Hide';
     }
     else {

@@ -8,6 +8,10 @@
   margin: 10px;
 }
 
+.error-msg {
+  color: $warn !important;
+}
+
 table {
   width: 100%;
   background-color: transparent !important;

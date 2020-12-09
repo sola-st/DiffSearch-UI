@@ -28,12 +28,21 @@ export class ResultComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  getData() {
+  getData(): MatTableDataSource<ResultData> {
+    // console.log ('get Data');
     this.codechanges = this.queryService.getCodeChanges();
     this.dataSource = new MatTableDataSource<ResultData>(this.codechanges);
     // console.log ("in getData");
     // console.log (this.dataSource.data);
     return this.dataSource;
+  }
+
+  getErrorMessage(): string {
+    return this.queryService.errorMessage;
+  }
+
+  emptyResult(): boolean {
+    return this.queryService.noChanges;
   }
 }
 
