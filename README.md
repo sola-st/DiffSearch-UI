@@ -1,4 +1,3 @@
-# DiffSearch-UI
 
 ## General information about the angular project
 
@@ -34,7 +33,7 @@ Install Angular CLI globally.
 
 npm i -g @angular/cli
 
-In DiffSearch-UI:  
+In directory DiffSearch-UI:  
 installing the project dependencies  
 npm install  
 
@@ -48,17 +47,20 @@ http://localhost:4200
 
 ## Content:
  
-main.ts - start point of the application  
-index.html - entry point of the application  
-app.component.(html/sccs/ts) - main component of the application  
-app.module.ts - main modul of the application (application modul)  
-app-routing.module.ts - router module  
-nav - contains navigation component  
-diffsearch - contains home component  
-query - contains query section component (Language selection, qery input, examples)  
-result - contains result section component (display of the code changes)  
-query.service.s - query service (http connection to server)  
-example.service.ts - example service (service for example interface)  
-resultdata.ts - interface for result data  
-examples.ts - interface for examples data  
-_theme.scss - theming functions, colour scheme  
+- DiffSearch-UI/src/**main.ts** - start point of the application
+- DiffSearch-UI/src/**index.html** - entry point of the application
+- DiffSearch-UI/src/app/**app.component.(html/sccs/ts)** - main component of the application (including currently applied navigation)
+- DiffSearch-UI/src/app/**app.module.ts** - main modul of the application (application modul)
+- DiffSearch-UI/src/app/**app-routing.module.ts** - router module
+- DiffSearch-UI/src/app/**diffsearch** - contains home component
+- DiffSearch-UI/src/app/**about** - contains about component
+- DiffSearch-UI/src/app/**nav** - contains navigation component (currently not applied, alternative to navigation in app.component.html )
+- DiffSearch-UI/src/app/**query** - contains query section component (Language selection, qery input, examples)
+- DiffSearch-UI/src/app/**result** - contains result section component (display of the code changes)
+- DiffSearch-UI/src/app/**query.service.ts** - query service (http connection to server)
+- DiffSearch-UI/src/app/**example.service.ts** - example service (service for example interface)
+- DiffSearch-UI/src/app/**resultdata.ts** - interface for result data
+- DiffSearch-UI/src/app/**examples.ts** - interface for examples data
+- DiffSearch-UI/src/**\_theme.scss** - theming functions, colour scheme
+- DiffSearch-UI/src/**proxy.conf.json** - proxy configuration file
+- DiffSearch-UI/src/**styles.scss** - global styles
