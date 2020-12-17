@@ -3,11 +3,11 @@
   <p><span class="error-msg">{{getErrorMessage()}}</span></p>
 </div>
 <div class="info" *ngIf="dataSource.data.length">
-  (<span class="accent">Max 10</span>) Code changes found in <span class="accent" >xxx seconds</span> using a data set of
-  <span class="accent">nnn code changes</span>:
+  (<span class="accent">Max 10</span>) Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
+  <span class="accent">{{changesnumber}} code changes</span>:
 </div>
 <div class="info" *ngIf="emptyResult()">
-  No Matching Code changes found in <span class="accent" >xxx seconds.</span>
+  No Matching Code changes found in <span class="accent" >{{duration}} seconds.</span>
 </div>
 <!-- <div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"></table>
