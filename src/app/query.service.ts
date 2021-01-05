@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders,  HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { throwError, Observable, of } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError} from 'rxjs/operators';
 import { ResultData } from './resultdata';
-import { ConditionalExpr } from '@angular/compiler';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
-import { timingSafeEqual } from 'crypto';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +15,6 @@ export class QueryService {
 
   serverdata: ServerData = {outputList: [], duration: '', changesnumber: ''};
 
-  // resultdata: ResultData[] = [];
   errorMessage = '';
   noChanges = false;
 
@@ -77,6 +74,7 @@ export class QueryService {
       console.log (rd);
       console.log (rd.outputList.length);
       this.serverdata = rd;
+      console.log (this.serverdata.outputList);
         if (rd.outputList.length === 0) {
          this.noChanges = true;
         } else if ((rd.outputList.length === 1) && (rd.outputList[0].url.startsWith('The query is not correct'))) {
@@ -91,7 +89,6 @@ export class QueryService {
   }
 
   getCodeChanges(): ResultData[] {
-    // return this.resultdata;
     return this.serverdata.outputList;
   }
 
@@ -113,9 +110,7 @@ export class QueryService {
 
   // }
   getQueryResult(oldquery: string, newquery: string): Observable<ServerData> {
-    // console.log (oldquery + '->' + newquery);
     const params = new HttpParams().set('Text1', oldquery).set('Text2', newquery);
-    // console.log(params);
     return this.http.get<ServerData>(this.queryUrl, {params})
       .pipe(
         catchError(this.handleError<ServerData>('getQeryResult')));

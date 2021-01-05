@@ -1,5 +1,5 @@
 // import { Component, OnInit } from '@angular/core';
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
@@ -13,36 +13,40 @@ import { QueryService } from '../query.service';
   styleUrls: ['./result.component.scss']
 })
 
-export class ResultComponent implements AfterViewInit {
+export class ResultComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['old', 'arrow', 'new', 'link'];
-  //  dataSource = new MatTableDataSource<ResultData>(ELEMENT_DATA);
   codechanges: ResultData[] = [];
 
   duration = '';
   changesnumber = '';
+  tablesize = 0;
 
-  dataSource = new MatTableDataSource<ResultData>();
+  // dataSource = new MatTableDataSource<ResultData>();
+  dataSource = new MatTableDataSource<ResultData>(this.codechanges);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(private queryService: QueryService) { }
 
+  // Pagination does not work yet
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  getData(): MatTableDataSource<ResultData> {
-    // console.log ('get Data');
-    this.codechanges = this.queryService.getCodeChanges();
+  ngOnInit () {
+  }
 
+  getData(): MatTableDataSource<ResultData> {
+    this.codechanges = this.queryService.getCodeChanges();
     // set the duration and changes number
     this.duration = this.queryService.serverdata.duration;
     this.changesnumber = this.queryService.serverdata.changesnumber;
 
-    this.dataSource = new MatTableDataSource<ResultData>(this.codechanges);
-    // console.log ("in getData");
-    // console.log (this.dataSource.data);
+    this.dataSource.data = this.codechanges;
+
+    this.tablesize = this.dataSource.data.length;
     return this.dataSource;
   }
 
@@ -59,10 +63,18 @@ export class ResultComponent implements AfterViewInit {
 const ELEMENT_DATA: ResultData[] = [
   {url: 'https://github.com/quarkusio/quarkus/commit/8b3d76af5e8f056334cc6ca39b78b90eedd8136a',
   hunkLines: '-120,15 +120,15',
-  codeChange_old: 'assertEquals(numberOfSegments,2);',
-  codeChange_new: 'assertEquals(2,numberOfSegments);'},
+  codeChangeOld: 'assertEquals(numberOfSegments,2);',
+  codeChangeNew: 'assertEquals(2,numberOfSegments);',
+  query: '',
+  fullChangeString: '',
+  rank: 0,
+  numberOfCandidateChanges: 0},
   {url: 'https://github.com/quarkusio/quarkus/commit/1c89c51f6626fed09d594ea69289da13736d613b',
   hunkLines: '-0,0 +1,34',
-  codeChange_old: 'assertFalse(deployed,\"Shouldnotdeployinvalidrule\");',
-  codeChange_new: 'assertFalse(\"Shouldnotdeployinvalidrule\",deployed);'}
+  codeChangeOld: 'assertFalse(deployed,\"Shouldnotdeployinvalidrule\");',
+  codeChangeNew: 'assertFalse(\"Shouldnotdeployinvalidrule\",deployed);',
+  query: '',
+  fullChangeString: '',
+  rank: 0,
+  numberOfCandidateChanges: 0}
 ];

@@ -1,9 +1,11 @@
 <!-- {{dataSource.data.length}} -->
+<div>
 <div *ngIf="getErrorMessage().length">
   <p><span class="error-msg">{{getErrorMessage()}}</span></p>
 </div>
-<div class="info" *ngIf="dataSource.data.length">
-  (<span class="accent">Max 10</span>) Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
+<!-- <div class="info" *ngIf="dataSource.data.length"> -->
+<div class="info" *ngIf="tablesize">
+  <span class="accent">{{codechanges.length}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
   <span class="accent">{{changesnumber}} code changes</span>:
 </div>
 <div class="info" *ngIf="emptyResult()">
@@ -28,7 +30,7 @@
       <!-- <mat-header-cell *matHeaderCellDef> </mat-header-cell>
       <mat-cell *matCellDef="let element"> -->
         <!-- -<span class="old">{{element.oldentry}}</span> -->
-        <span class="minus">- </span><span class="old">{{element.codeChange_old}}</span>
+        <span class="minus">- </span><span class="old">{{element.codeChangeOld}}</span>
         <!-- -{{element.codechangesold}} -->
       </td>
     </ng-container>
@@ -50,7 +52,7 @@
       <!-- <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element"> -->
         <!-- +<span class="new">{{element.newentry}}</span> -->
-        <span class="plus">+ </span><span class="new">{{element.codeChange_new}}</span>
+        <span class="plus">+ </span><span class="new">{{element.codeChangeNew}}</span>
       </td>
     </ng-container>
     <!-- Link Column -->
@@ -61,7 +63,7 @@
       <!--<mat-cell *matCellDef="let element"> -->
         <!-- <mat-icon matTooltip="{{element.link}}"> -->
         <a class = "link" mat-flat-button href="{{element.url}}" target="_blank">
-          <mat-icon matTooltip="{{element.hunk_lines}}">
+          <mat-icon matTooltip="{{element.hunkLines}}">
             open_in_new
           </mat-icon>
         </a>
@@ -74,6 +76,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
   </table>
   <!-- </mat-table> -->
-  <!-- paginator possibly insert and test again-->
-  <!-- <mat-paginator class="paginator" [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="dataSource.data.length"></mat-paginator> -->
-
+  <!-- paginator possibly insert and test again (does not work yet)-->
+  <!-- <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+  <!-- <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [ngStyle]="{display: dataSource.data.length > 0 ? 'block' : 'none'}"></mat-paginator> -->
+</div>

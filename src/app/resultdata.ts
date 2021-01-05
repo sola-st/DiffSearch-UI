@@ -1,6 +1,10 @@
 export interface ResultData {
   url: string;
   hunkLines: string;
-  codeChange_old: string;
-  codeChange_new: string;
+  codeChangeOld: string;
+  codeChangeNew: string;
+  query: string;
+  fullChangeString: string;
+  rank: number;
+  numberOfCandidateChanges: number;
 }
