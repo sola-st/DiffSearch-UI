@@ -18,6 +18,8 @@ export class QueryService {
   errorMessage = '';
   noChanges = false;
 
+  newSearch = false;
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     .set('access-control-allow-origin', 'http://localhost:8843/')
@@ -75,6 +77,7 @@ export class QueryService {
       console.log (rd.outputList.length);
       this.serverdata = rd;
       console.log (this.serverdata.outputList);
+      this.setnewSearch(true);
         if (rd.outputList.length === 0) {
          this.noChanges = true;
         } else if ((rd.outputList.length === 1) && (rd.outputList[0].url.startsWith('The query is not correct'))) {
@@ -127,6 +130,14 @@ export class QueryService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  setnewSearch (flag: boolean) {
+    this.newSearch = flag;
+  }
+
+  isnewSearch(): boolean {
+    return this.newSearch;
   }
 }
 export interface ServerData {

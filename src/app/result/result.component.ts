@@ -21,7 +21,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
   changesnumber = '';
   tablesize = 0;
 
-  // dataSource = new MatTableDataSource<ResultData>();
   dataSource = new MatTableDataSource<ResultData>(this.codechanges);
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -30,7 +29,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   constructor(private queryService: QueryService) { }
 
-  // Pagination does not work yet
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -39,14 +37,17 @@ export class ResultComponent implements OnInit, AfterViewInit {
   }
 
   getData(): MatTableDataSource<ResultData> {
-    this.codechanges = this.queryService.getCodeChanges();
-    // set the duration and changes number
-    this.duration = this.queryService.serverdata.duration;
-    this.changesnumber = this.queryService.serverdata.changesnumber;
+    if (this.queryService.isnewSearch()) {
+      this.codechanges = this.queryService.getCodeChanges();
+      // set the duration and changes number
+      this.duration = this.queryService.serverdata.duration;
+      this.changesnumber = this.queryService.serverdata.changesnumber;
+      this.dataSource.data = this.codechanges;
+      this.tablesize = this.dataSource.data.length;
 
-    this.dataSource.data = this.codechanges;
+      this.queryService.setnewSearch(false);
+    }
 
-    this.tablesize = this.dataSource.data.length;
     return this.dataSource;
   }
 
