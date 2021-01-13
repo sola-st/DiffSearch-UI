@@ -5,7 +5,7 @@
       <!-- currently only Java to select -> set disable -->
       <mat-radio-button class="language-margin" *ngFor="let language of languages"
       [value]="language"
-      [disabled]= "language == 'JavaScript' || language =='Python'">
+      [disabled]= "language == 'JavaScript'">
         {{language}}
       </mat-radio-button>
     </mat-radio-group>
@@ -94,7 +94,7 @@
   </ng-template>
   <div id="search-btn">
     <button mat-raised-button color="accent"
-      matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent)"
+      matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent, selectedLanguage)"
       [disabled]="!(oldcontent && newcontent)">
       search
     </button>

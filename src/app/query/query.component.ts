@@ -54,8 +54,8 @@ export class QueryComponent implements OnInit {
     this.newcontent = this.examples[n].new;
   }
 
-  onSearchClick(oldstring: string, newstring: string): void {
-    this.queryService.getResult(oldstring, newstring);
+  onSearchClick(oldstring: string, newstring: string, language: string): void {
+    this.queryService.getResult(oldstring, newstring, language);
   }
 
   toggle(): void {

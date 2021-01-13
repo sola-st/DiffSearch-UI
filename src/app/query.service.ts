@@ -65,25 +65,24 @@ export class QueryService {
   //    // console.log ('url ' + this.resultdata[0].url);
   // }
 
-  getResult(queryold: string, querynew: string): void{
+  getResult(queryold: string, querynew: string, language: string): void{
     // reset all variables
     this.serverdata = {outputList: [], duration: '', changesnumber: ''};
     this.noChanges = false;
     this.errorMessage = '';
 
-    this.getQueryResult(queryold, querynew)
+    this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
       console.log (rd);
       console.log (rd.outputList.length);
       this.serverdata = rd;
-      console.log (this.serverdata.outputList);
       this.setnewSearch(true);
-        if (rd.outputList.length === 0) {
-         this.noChanges = true;
-        } else if ((rd.outputList.length === 1) && (rd.outputList[0].url.startsWith('The query is not correct'))) {
-          this.errorMessage = this.serverdata.outputList[0].url;  // message in outputList[0]
+      if (rd.outputList.length === 0) {
+        this.noChanges = true;
+      } else if ((rd.outputList.length === 1) && rd.outputList[0].query.startsWith('')) {
+          this.errorMessage = this.serverdata.outputList[0].codeChangeOld;  // message in outputList[0]
           this.serverdata.outputList.pop(); // remove the error message from outputList
-        }
+      }
     });
 
     // this.getQueryResult(queryold, querynew)
@@ -112,8 +111,8 @@ export class QueryService {
   //   //    );
 
   // }
-  getQueryResult(oldquery: string, newquery: string): Observable<ServerData> {
-    const params = new HttpParams().set('Text1', oldquery).set('Text2', newquery);
+  getQueryResult(oldquery: string, newquery: string, language: string): Observable<ServerData> {
+    const params = new HttpParams().set('Text1', oldquery).set('Text2', newquery).set('Language', language);
     return this.http.get<ServerData>(this.queryUrl, {params})
       .pipe(
         catchError(this.handleError<ServerData>('getQeryResult')));
