@@ -74,14 +74,22 @@ export class QueryService {
     this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
       console.log (rd);
-      console.log (rd.outputList.length);
-      this.serverdata = rd;
-      this.setnewSearch(true);
-      if (rd.outputList.length === 0) {
-        this.noChanges = true;
-      } else if ((rd.outputList.length === 1) && rd.outputList[0].query.startsWith('')) {
-          this.errorMessage = this.serverdata.outputList[0].codeChangeOld;  // message in outputList[0]
-          this.serverdata.outputList.pop(); // remove the error message from outputList
+      if (rd != null) {
+        console.log (rd.outputList.length);
+        this.serverdata = rd;
+        this.setnewSearch(true);
+        if (rd.outputList != null) {
+          if (rd.outputList.length === 0) {
+            this.noChanges = true;
+          } else if ((rd.outputList.length === 1) && rd.outputList[0].query.startsWith('')) {
+            this.errorMessage = this.serverdata.outputList[0].codeChangeOld;  // message in outputList[0]
+            this.serverdata.outputList.pop(); // remove the error message from outputList
+          }
+        } else {
+          this.errorMessage = "Couldn't query the DiffSearch server or or an undefined response was received."
+        }
+      } else {
+        this.errorMessage = "Couldn't query the DiffSearch server or or an undefined response was received."
       }
     });
 
@@ -124,7 +132,8 @@ export class QueryService {
       // TODO: send the error to remote logging infrastructure
       console.log ('in handleError');
       console.error(error); // log to console instead
-      this.errorMessage = error;
+      // this.errorMessage = error;
+      this.errorMessage = "Couldn't query the DiffSearch server or an undefined response was received.";
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
