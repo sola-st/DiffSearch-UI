@@ -70,7 +70,7 @@ export class QueryService {
     this.serverdata = {outputList: [], duration: '', changesnumber: ''};
     this.noChanges = false;
     this.errorMessage = '';
-
+    this.setnewSearch(true);
     this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
       console.log (rd);
@@ -86,10 +86,10 @@ export class QueryService {
             this.serverdata.outputList.pop(); // remove the error message from outputList
           }
         } else {
-          this.errorMessage = "Couldn't query the DiffSearch server or or an undefined response was received."
+          this.errorMessage = "Couldn't query the DiffSearch server or an undefined response was received."
         }
       } else {
-        this.errorMessage = "Couldn't query the DiffSearch server or or an undefined response was received."
+        this.errorMessage = "Couldn't query the DiffSearch server or an undefined response was received."
       }
     });
 

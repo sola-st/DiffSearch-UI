@@ -26,7 +26,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-
   constructor(private queryService: QueryService) { }
 
   ngAfterViewInit() {
@@ -45,6 +44,7 @@ export class ResultComponent implements OnInit, AfterViewInit {
       this.dataSource.data = this.codechanges;
       this.tablesize = this.dataSource.data.length;
 
+      // reset the new search flag
       this.queryService.setnewSearch(false);
     }
 
