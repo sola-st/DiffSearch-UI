@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 // import { Directive, Input, Component, OnInit } from '@angular/core';
 import { ExampleService } from '../example.service';
 import { Example } from '../examples';
@@ -22,13 +22,12 @@ export class QueryComponent implements OnInit {
   public isMobile = false;
 
   examples: Example[] = [];
-  oldcontent: string;
-  newcontent: string;
+  oldcontent: string = '';
+  newcontent: string = '';
 
   public showGrammar = false;
   public info: any = 'Show';
   querygrammar: Grammar[] = GRAMMAR;
-
 
   constructor(
     private exampleService: ExampleService,
@@ -49,13 +48,18 @@ export class QueryComponent implements OnInit {
   }
 
   onExampleClick(n: number): void {
-    // console.log (n);
     this.oldcontent = this.examples[n].old;
     this.newcontent = this.examples[n].new;
   }
 
+  autoGrowTextZone(e): void {
+    e.target.style.height = "0px";
+    e.target.style.height = (e.target.scrollHeight + 25)+"px";
+  }
+
   onSearchClick(oldstring: string, newstring: string, language: string): void {
-    this.queryService.getResult(oldstring, newstring, language);
+    // this.queryService.getResult(oldstring, newstring, language);
+    this.queryService.getResult(oldstring.trim(), newstring.trim(), language);
   }
 
   toggle(): void {

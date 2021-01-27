@@ -37,12 +37,18 @@
   <section class="query-section" *ngIf="(!isMobile); else mobile_template">
   <mat-form-field appearance="fill">
     <mat-label>Insert the old code...</mat-label>
-    <textarea class="text" [(ngModel)]="oldcontent"
-      matInput
-      cdkTextareaAutosize
-      cdkAutosizeMinRows="1"
-      cdkAutosizeMaxRows="8">
-    </textarea>
+    <pre class="pre">
+      <!-- <textarea class="text" [(ngModel)]="oldcontent"
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="8">
+      </textarea> -->
+      <textarea class="text" [(ngModel)]="oldcontent"
+        matInput
+        (keyup)="autoGrowTextZone($event)">
+      </textarea>
+    </pre>
   </mat-form-field>
 <!-- Arrow -->
 <!-- <div class="button-container">
@@ -58,24 +64,36 @@
   <!-- second textarea-->
   <mat-form-field appearance="fill">
     <mat-label>Insert the new code...</mat-label>
-    <textarea class="text" [(ngModel)]="newcontent"
-      matInput
-      cdkTextareaAutosize
-      cdkAutosizeMinRows="1"
-      cdkAutosizeMaxRows="8">
-  </textarea>
+    <pre class="pre">
+      <!-- <textarea class="text" [(ngModel)]="newcontent"
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="8">
+    </textarea> -->
+      <textarea class="text" [(ngModel)]="newcontent"
+        matInput
+        (keyup)="autoGrowTextZone($event)">
+      </textarea>
+  </pre>
   </mat-form-field>
   </section>
   <ng-template #mobile_template id="mobile">
     <div class="mobile-content">
     <mat-form-field appearance="fill" class="mobile-field">
       <mat-label>Insert the old code...</mat-label>
-      <textarea class="text" [(ngModel)]="oldcontent"
-        matInput
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="8">
-      </textarea>
+      <pre class="pre">
+        <!-- <textarea class="text" [(ngModel)]="oldcontent"
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="8">
+        </textarea> -->
+        <textarea class="text" [(ngModel)]="oldcontent"
+          matInput
+          (keyup)="autoGrowTextZone($event)">
+        </textarea>
+      </pre>
     </mat-form-field>
     <div class="arrow">
       <mat-icon class="east" aria-hidden="false" aria-label="arrow" color="primary">east</mat-icon>
@@ -83,12 +101,18 @@
     <!-- second textarea-->
     <mat-form-field appearance="fill" class="mobile-field">
       <mat-label>Insert the new code...</mat-label>
-      <textarea class="text" [(ngModel)]="newcontent"
-        matInput
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="8">
-      </textarea>
+      <pre class="pre">
+        <!-- <textarea class="text" [(ngModel)]="newcontent"
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="8">
+        </textarea> -->
+        <textarea class="text" [(ngModel)]="newcontent"
+          matInput
+          (keyup)="autoGrowTextZone($event)">
+        </textarea>
+      </pre>
     </mat-form-field>
   </div>
   </ng-template>

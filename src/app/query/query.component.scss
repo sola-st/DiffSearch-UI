@@ -37,7 +37,14 @@
 }
 
 .text {
-  height: 25px;
+  display: flex;
+}
+
+.pre {
+  display: flex;
+  margin-bottom: -0.8em;
+  margin-right: -1.0em;
+  overflow: hidden;
 }
 
 #search-btn {
@@ -82,4 +89,5 @@
 .grammar-card {
   background-color: rgba($primary, 0.10) !important;
   max-width: 400px;
+  margin-bottom: 10px;
 }

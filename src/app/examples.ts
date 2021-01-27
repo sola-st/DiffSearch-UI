@@ -7,8 +7,8 @@ export interface Example {
 export const EXAMPLES: Example[] = [
   { query: 'Same function, change caller', old: 'EXPR.ID<0>();', new: 'EXPR.ID<0>();'},
   { query: 'Change binary operator', old: 'EXPR<0> binOP EXPR<1>', new: 'EXPR<0> binOP EXPR<1>'},
-  { query: 'More specific if', old: 'if (ID<0>) { <...>', new: 'if (ID<0> && EXPR) { <...>'},
-  { query: 'Less specific if', old: 'if (ID<0>) { <...>', new: 'if (ID<0> || EXPR) { <...>'},
+  { query: 'More specific if', old: 'if (ID<0>) { \n<...>', new: 'if (ID<0> && EXPR) { \n<...>'},
+  { query: 'Less specific if', old: 'if (ID<0>) { \n<...>', new: 'if (ID<0> || EXPR) { \n<...>'},
   { query: 'Fix wrong function', old: 'EXPR<0>.ID()', new: 'EXPR<0>.ID()'},
   { query: 'Same function, more arguments', old: 'ID<0>();', new: 'ID<0>(<...>);'},
   { query: 'Same function, less arguments', old: 'ID<0>(ID);', new: 'ID<0>();'},
