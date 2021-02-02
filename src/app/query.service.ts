@@ -10,8 +10,8 @@ import { ResultData } from './resultdata';
 
 export class QueryService {
 
-  // private queryUrl = 'http://localhost:8843/';
-  private queryUrl = 'http://localhost:4200/api';  // see proxy.conf.json
+  private queryUrl = 'http://localhost:8843/';
+  // private queryUrl = 'http://localhost:4200/api';  // see proxy.conf.json
 
   serverdata: ServerData = {outputList: [], duration: '', changesnumber: ''};
 

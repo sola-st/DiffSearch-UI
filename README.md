@@ -1,5 +1,4 @@
-
-## General information about the angular project
+# Diffsearch
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 
@@ -39,9 +38,9 @@ installing the project dependencies
 npm install  
 
 run:
-ng serve --proxy-config src/proxy.conf.json  
+ng serve  
 or  
-npm start -- --proxy-config src/proxy.conf.json  
+npm start  
 
 The frontend starts at:  
 http://localhost:4200
