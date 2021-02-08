@@ -4,13 +4,16 @@ import { Observable, of } from 'rxjs';
 import { catchError} from 'rxjs/operators';
 import { ResultData } from './resultdata';
 
+import { environment } from '../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class QueryService {
 
-  private queryUrl = 'http://localhost:8843/';
+  // private queryUrl = 'http://localhost:8843/';
+  private queryUrl = environment.API_URL;
   // private queryUrl = 'http://localhost:4200/api';  // see proxy.conf.json
 
   serverdata: ServerData = {outputList: [], duration: '', changesnumber: ''};
