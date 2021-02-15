@@ -7,7 +7,8 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   { path: 'diffsearch', component: DiffsearchComponent },
   { path: 'about', component: AboutComponent },
-  { path: '', redirectTo: 'diffsearch', pathMatch: 'full' }
+  { path: '', redirectTo: 'diffsearch', pathMatch: 'full' },
+  { path: '**', redirectTo: 'diffsearch'}
 ];
 
 @NgModule({
