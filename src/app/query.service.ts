@@ -76,9 +76,9 @@ export class QueryService {
     this.setnewSearch(true);
     this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
-      console.log (rd);
+      // console.log (rd);
       if (rd != null) {
-        console.log (rd.outputList.length);
+        // console.log (rd.outputList.length);
         this.serverdata = rd;
         this.setnewSearch(true);
         if (rd.outputList != null) {
@@ -133,7 +133,6 @@ export class QueryService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.log ('in handleError');
       console.error(error); // log to console instead
       // this.errorMessage = error;
       this.errorMessage = "Couldn't query the DiffSearch server or an undefined response was received.";
