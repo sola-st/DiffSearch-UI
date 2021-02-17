@@ -31,19 +31,48 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Development mode:
 Install Angular CLI globally.
 
-npm i -g @angular/cli
+`npm i -g @angular/cli`
 
 In directory DiffSearch-UI:  
 installing the project dependencies  
 npm install  
 
-run:
-ng serve  
+run:  
+`ng serve`  
 or  
-npm start  
+`npm start`  
 
 The frontend starts at:  
 http://localhost:4200
+
+Note:  
+The backend server `Diffsearch` must be started in this case either without `-gurl` option or with `-gurl http://localhost:4200`
+(http://localhost:4200 is the default)  
+
+## Production mode / deployment:
+
+In directory DiffSearch-UI:  
+build:  
+`npm run build -- --prod`  
+
+Fallback configuration (Apache):  
+(Realize the routing after a refresh of the pages)  
+
+Add a .htaccess file to the directory where index.html is located  
+(DiffSearch-UI/dist/diffsearch)
+
+.htaccess:  
+
+`RewriteEngine On`  
+`# If an existing asset or directory is requested go to it as it is`  
+`RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]`  
+`RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d`  
+`RewriteRule ^ - [L]`  
+
+`# If the requested resource doesn't exist, use index.html`  
+`RewriteRule ^ /index.html`  
+
+
 
 ## Content:
  
