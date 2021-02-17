@@ -84,7 +84,10 @@ export class QueryService {
         if (rd.outputList != null) {
           if (rd.outputList.length === 0) {
             this.noChanges = true;
-          } else if ((rd.outputList.length === 1) && rd.outputList[0].query.startsWith('')) {
+          } else if ((rd.outputList.length === 1) &&
+              ((rd.outputList[0].query.length == 0) ||
+              (rd.outputList[0].codeChangeOld === 'invalid query') ||
+              (rd.outputList[0].codeChangeNew === 'invalid query'))){
             this.errorMessage = this.serverdata.outputList[0].codeChangeOld;  // message in outputList[0]
             this.serverdata.outputList.pop(); // remove the error message from outputList
           }
