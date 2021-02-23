@@ -28,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { SourceComponent } from './source/source.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatCardModule } from '@angular/material/card';
     AboutComponent,
     NavComponent,
     QueryComponent,
-    ResultComponent
+    ResultComponent,
+    SourceComponent
   ],
   imports: [
     BrowserModule,

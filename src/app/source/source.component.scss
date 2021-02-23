@@ -1,0 +1,22 @@
+.source-content{
+  //margin:auto;
+  width: 95%;
+  line-height: 150%;
+}
+
+@media only screen and (min-width: 42em) and (max-width: 64em) {
+  /* min-width 672px / max-width 1024px */
+  /*     probably nodepads     */
+  .source-content {
+    width: 95%;
+    line-height: 150%;
+  }
+}
+
+/** larger monitors **/
+@media only screen and (min-width: 600px) {
+  .source-content {
+    width: 80%;
+  line-height: 150%;
+  }
+}

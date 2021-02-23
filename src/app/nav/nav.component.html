@@ -45,14 +45,23 @@
       </mat-toolbar-row>
       <mat-toolbar-row class="last-row">
         <div class="stretch"></div>
-        <button mat-button>
+        <!-- <button mat-button>
           <mat-icon>code</mat-icon>
           <a class = "toolbar-link" href ="#">Source</a>
-        </button>
-        <button mat-button>
+        </button> -->
+        <a mat-button routerLink="source" mat-button>
+          <mat-icon>code</mat-icon>
+          <!-- <a class = "toolbar-link" href ="#">Source</a> -->
+          Source
+        </a>
+        <!-- <button mat-button>
           <mat-icon>text_snippet</mat-icon>
           <a class = "toolbar-link" href ="#">Paper</a>
-        </button>
+        </button> -->
+        <a mat-button class = "toolbar-link" href ="#">
+          <mat-icon>text_snippet</mat-icon>
+          Paper
+        </a>
         <a mat-button routerLink="about">
           <mat-icon>info</mat-icon>
           About

@@ -1,10 +1,25 @@
 @import "./../../theme";
-.about-content{
-  margin:auto
-}
 
 .about {
-  width: 80%;
+  width: 95%;
+  line-height: 150%;
+}
+
+@media only screen and (min-width: 42em) and (max-width: 64em) {
+  /* min-width 672px / max-width 1024px */
+  /*     probably nodepads     */
+  .about {
+    width: 95%;
+    line-height: 150%;
+  }
+}
+
+/** larger monitors **/
+@media only screen and (min-width: 1000px) {
+  .about {
+    width: 80%;
+    line-height: 150%;
+  }
 }
 
 #primary {
@@ -13,7 +28,7 @@
 
 .mat-h1 {
   text-align: center;
-  width: 80%;
+  // width: 80%;
 }
 
 // .authors {
@@ -24,16 +39,27 @@
 //   border: solid;
 // }
 
-.auths{
-  width: 80%;
-}
+// .auths{
+//   width: 80%;
+// }
 
 #author {
   background-color: transparent !important;
 }
 
+.web-interface {
+  // width: 80%;
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.web-interface span {
+  font-size: 80%;
+}
+
 .header-image {
   background-size: cover;
+  background-color: whitesmoke;
 }
 
 a {

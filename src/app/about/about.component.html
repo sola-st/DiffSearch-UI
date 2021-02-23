@@ -1,50 +1,59 @@
-<div class="about-content">
-<p>
-  (This content still needs to be updated.)
-</p>
 <div class="about">
-<p>
-  This Application presents <span id="primary">DiffSearch</span>, the first <span id="primary">scalable and precise search engine for code changes</span>.
-</p>
-<p>For more details</p>
-<ul>
-  <li>Read our <a href="about">paper</a></li>
-  <li>Inspect the <a href="about">source code</a></li>
-</ul>
-</div>
-<h2 class="mat-h1">Authors</h2>
-<div class="auths">
-  <mat-grid-list [cols]="isMobile ? 1 : 2"
-                rowHeight="150px">
-    <mat-grid-tile>
-      <mat-card id="author" class="mat-elevation-z0">
-        <mat-card-header>
-          <div mat-card-avatar>
+  <p>
+    The source code of successful projects is evolving all the time,
+  resulting in hundreds of thousands of code changes stored in source code
+  repositories. This wealth of data has been used for various mining and
+  learning tasks. However, it is still difficult to search for specific
+  kinds of code changes across a large number of code repositories and
+  changes.
+  </p>
+  <p>
+    To fill this gap, we here present <span id="primary">DiffSearch -- the first scalable and
+  precise search engine for code changes</span>. Given a query that describes
+  possibly abstracted versions of a code snippet before and after a
+  change, the approach returns a set of changes that are guaranteed to
+  match the query.
+  </p>
+  <h1 class="mat-h1">Authors</h1>
+  <!-- <div class="auths"> -->
+  <div>
+    <mat-grid-list [cols]="isMobile ? 1 : 2"
+      rowHeight="150px">
+      <mat-grid-tile>
+        <mat-card id="author" class="mat-elevation-z0">
+          <mat-card-header>
+            <div mat-card-avatar>
             <!-- <mat-icon arial-hidden="false" aria-label="user icon" style="transform: scale(1.8);">
               account_circle
             </mat-icon> -->
-            <img mat-card-avatar class="header-image" src="../../assets/images/ldigrazia.png">
-          </div>
-          <mat-card-title>Luca Di Grazia</mat-card-title>
-          <mat-card-subtitle>University of Stuttgart <br>
-            <a href="https://www.software-lab.org/people/Luca_DiGrazia.html"><mat-icon>language</mat-icon></a>
-          </mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </mat-grid-tile>
+              <img mat-card-avatar class="header-image" src="../../assets/images/ldigrazia.png">
+            </div>
+            <mat-card-title>Luca Di Grazia</mat-card-title>
+            <mat-card-subtitle>University of Stuttgart <br>
+              <a href="https://www.software-lab.org/people/Luca_DiGrazia.html"><mat-icon>language</mat-icon></a>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </mat-grid-tile>
 
-    <mat-grid-tile>
-      <mat-card id="author" class="mat-elevation-z0">
-        <mat-card-header>
-          <img mat-card-avatar class="header-image" src="../../assets/images/mpradel.png">
-          <mat-card-title>Michael Pradel</mat-card-title>
-          <mat-card-subtitle>University of Stuttgart <br>
-            <a href="https://www.software-lab.org/people/Michael_Pradel.html"><mat-icon>language</mat-icon></a>
-          </mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card id="author" class="mat-elevation-z0">
+          <mat-card-header>
+            <img mat-card-avatar class="header-image" src="../../assets/images/mpradel.png">
+            <mat-card-title>Michael Pradel</mat-card-title>
+            <mat-card-subtitle>University of Stuttgart <br>
+              <a href="https://www.software-lab.org/people/Michael_Pradel.html"><mat-icon>language</mat-icon></a>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 
-  </mat-grid-list>
-</div>
+  <div class="web-interface">
+    <p>
+      Web interface <br>
+      <a href="https://www.iste.uni-stuttgart.de/institute/team/Jenke-00001/"><span>Carola Jenke</span></a>
+    </p>
+  </div>
 </div>
