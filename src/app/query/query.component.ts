@@ -58,7 +58,6 @@ export class QueryComponent implements OnInit {
   }
 
   onSearchClick(oldstring: string, newstring: string, language: string): void {
-    // this.queryService.getResult(oldstring, newstring, language);
     this.queryService.getResult(oldstring.trim(), newstring.trim(), language);
   }
 
@@ -72,5 +71,9 @@ export class QueryComponent implements OnInit {
     else {
       this.info = 'Show';
     }
+  }
+
+  getloading(): boolean {
+    return this.queryService.loading;
   }
 }

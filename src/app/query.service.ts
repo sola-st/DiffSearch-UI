@@ -28,6 +28,8 @@ export class QueryService {
     .set('access-control-allow-origin', 'http://localhost:8843/')
   };
 
+  loading = false; // for spinner in query.componente
+
   constructor(private http: HttpClient) { }
 
   // getResult(queryold: string, querynew: string): void{
@@ -70,6 +72,7 @@ export class QueryService {
 
   getResult(queryold: string, querynew: string, language: string): void{
     // reset all variables
+    this.loading = true; // for spinner in query.componente
     this.serverdata = {outputList: [], duration: '', changesnumber: ''};
     this.noChanges = false;
     this.errorMessage = '';
@@ -77,6 +80,7 @@ export class QueryService {
     this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
       // console.log (rd);
+      this.loading = false; // for spinner in query.componente
       if (rd != null) {
         // console.log (rd.outputList.length);
         this.serverdata = rd;
@@ -95,6 +99,7 @@ export class QueryService {
           this.errorMessage = "Couldn't query the DiffSearch server or an undefined response was received."
         }
       } else {
+        this.loading = false;  // for spinner in query.componente
         this.errorMessage = "Couldn't query the DiffSearch server or an undefined response was received."
       }
     });
@@ -151,6 +156,10 @@ export class QueryService {
 
   isnewSearch(): boolean {
     return this.newSearch;
+  }
+
+  getloading(): boolean {
+    return this.loading;
   }
 }
 export interface ServerData {

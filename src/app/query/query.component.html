@@ -117,12 +117,26 @@
     </mat-form-field>
   </div>
   </ng-template>
-  <div id="search-btn">
+  <!-- <div id="search-btn">
     <button mat-raised-button color="accent"
       matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent, selectedLanguage)"
       [disabled]="!(oldcontent && newcontent)">
       search
     </button>
+  </div> -->
+  <!-- button with spinner-->
+  <div class="button-container">
+    <div class="spinner-container" *ngIf="getloading()">
+      <mat-spinner diameter="24"></mat-spinner>
+    </div>
+    <!-- <div id="search-btn"> -->
+    <div>
+      <button mat-raised-button color="accent"
+        matTooltip="Search code changes" (click)="onSearchClick(oldcontent, newcontent, selectedLanguage)"
+        [disabled]="!(oldcontent && newcontent) || getloading()">
+        search
+      </button>
+    </div>
   </div>
 <!-- Examples -->
 <!-- <p>Examples:</p>
