@@ -17,38 +17,26 @@
 /** larger monitors **/
 @media only screen and (min-width: 1000px) {
   .about {
-    width: 80%;
+    // width: 80%;
     line-height: 150%;
   }
 }
 
 #primary {
-  color : $primary;
+  color : mat-color($primary-palette);
 }
 
 .mat-h1 {
+  margin-top: 3rem;
   text-align: center;
   // width: 80%;
 }
-
-// .authors {
-//   display: flex;
-//   justify-content: center;
-//   width: 80%;
-//   border-color: lightskyblue;
-//   border: solid;
-// }
-
-// .auths{
-//   width: 80%;
-// }
 
 #author {
   background-color: transparent !important;
 }
 
 .web-interface {
-  // width: 80%;
   margin-top: 5rem;
   text-align: center;
 }
@@ -63,5 +51,5 @@
 }
 
 a {
- color: $primary !important;
+ color : mat-color($primary-palette);
 }

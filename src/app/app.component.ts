@@ -20,6 +20,7 @@ export class AppComponent {
     });
   }
 
+  // currently not used
   toggleTheme(): void {
     this.document.body.classList.toggle('dark-theme');
   }

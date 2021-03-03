@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { SourceComponent } from './source/source.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     NavComponent,
     QueryComponent,
     ResultComponent,
-    SourceComponent
+    SourceComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

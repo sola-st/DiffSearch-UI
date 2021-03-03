@@ -1,0 +1,17 @@
+@import "./../../theme";
+
+.footer-link {
+ color: $primary !important;
+ text-decoration: none;
+ font-size: 80%;
+}
+
+.lighter-toolbar {
+  background-color: mat-color($primary-palette, 100);
+}
+
+.row-elements {
+  margin: auto;
+}
+
+

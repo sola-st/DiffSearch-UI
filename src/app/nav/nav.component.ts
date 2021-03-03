@@ -29,6 +29,7 @@ export class NavComponent {
   }
   // constructor(private breakpointObserver: BreakpointObserver) {}
 
+  // currently not used
   toggleTheme(): void {
     this.document.body.classList.toggle('dark-theme');
   }

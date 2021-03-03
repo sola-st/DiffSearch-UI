@@ -3,18 +3,22 @@
 @import "~@angular/material/theming";
 
 // Definition of colour palettes
-// $primary-palette: mat-palette($mat-deep-orange);
 $primary-palette: mat-palette($mat-indigo);
-// $accent-palette: mat-palette($mat-cyan);
 $accent-palette: mat-palette($mat-deep-orange);
 $warn-palette: mat-palette($mat-red);
-
 // Creating theme objects
 $theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
-$dark-theme: mat-dark-theme($primary-palette, $accent-palette, $warn-palette);
+
+// dark: currently not used
+$dark-primary-palette: mat-palette($mat-indigo, 300);
+$dark-accent-palette: mat-palette($mat-deep-orange, 300);
+$dark-warn-palette: mat-palette($mat-red, 300);
+// Creating theme objects
+$dark-theme: mat-dark-theme($dark-primary-palette, $dark-accent-palette, $dark-warn-palette);
 
 // Create $primary, $accent, $warn variables for easy
 // use of the primary colour, accent colour, warn colour in variant 500
 $primary: mat-color($primary-palette);
 $accent: mat-color($accent-palette);
 $warn: mat-color($warn-palette);
+

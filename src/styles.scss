@@ -17,6 +17,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @include mat-core();
 @include angular-material-theme($theme);
 
-.dark-theme {
-  @include angular-material-theme($dark-theme);
-}
+// .dark-theme {
+//   @include angular-material-theme($dark-theme);
+// }
