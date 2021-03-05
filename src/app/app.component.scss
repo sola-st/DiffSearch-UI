@@ -28,18 +28,17 @@ span {
   flex-direction: column;
   height: 100vh;
   overflow: auto;
-  padding: 2%;
-  // flex-grow: 1;
-  // flex-shrink: 1;
-
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
 }
 
 .ds-footer {
-  margin: 0 -2% -2% -2%;
+  margin: 0 0 0 -5.5%;
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 104%;
+  width: 111%;
   justify-content: flex-end;
 }
 

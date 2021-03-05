@@ -1,22 +1,27 @@
-.source-content{
-  //margin:auto;
-  width: 95%;
+ .source-content {
+   // mobile
   line-height: 150%;
+  max-width : 95%;
+ }
+
+div {
+  margin: auto;
 }
 
 @media only screen and (min-width: 42em) and (max-width: 64em) {
-  /* min-width 672px / max-width 1024px */
-  /*     probably nodepads     */
+  // min-width 672px / max-width 1024px
+  // probably nodepads
   .source-content {
     width: 95%;
     line-height: 150%;
   }
 }
 
-/** larger monitors **/
-@media only screen and (min-width: 600px) {
+// larger monitors
+@media only screen and (min-width: 1000px) {
   .source-content {
     width: 80%;
-  line-height: 150%;
+    line-height: 150%;
   }
 }
+

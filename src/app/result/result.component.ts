@@ -30,15 +30,24 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+
+    this.codechanges = this.queryService.getCodeChanges();
+    this.duration = this.queryService.serverdata.duration;
+    this.changesnumber = this.queryService.serverdata.changesnumber;
+    this.dataSource.data = this.codechanges;
+    this.tablesize = this.dataSource.data.length;
   }
 
   ngOnInit () {
+
   }
 
   getData(): MatTableDataSource<ResultData> {
+    //console.log (this.queryService.getCodeChanges());
     if (this.queryService.isnewSearch()) {
       this.codechanges = this.queryService.getCodeChanges();
       // set the duration and changes number
+      // reset the new search flag
       this.duration = this.queryService.serverdata.duration;
       this.changesnumber = this.queryService.serverdata.changesnumber;
       this.dataSource.data = this.codechanges;
@@ -47,7 +56,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
       // reset the new search flag
       this.queryService.setnewSearch(false);
     }
-
     return this.dataSource;
   }
 

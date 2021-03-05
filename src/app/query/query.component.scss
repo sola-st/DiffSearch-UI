@@ -19,7 +19,16 @@
   align-content: center;
   align-items: center;
   justify-content: space-evenly;
+  margin: auto;
 }
+
+// larger monitors
+@media only screen and (min-width: 1000px) {
+  .query-section {
+    width: 80%;
+  }
+}
+
 .arrow {
   display: flex;
   align-content: center;

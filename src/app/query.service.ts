@@ -16,6 +16,10 @@ export class QueryService {
   private queryUrl = environment.API_URL;
   // private queryUrl = 'http://localhost:4200/api';  // see proxy.conf.json
 
+  // save the last queries for re-route
+  oldquery = '';
+  newquery = '';
+
   serverdata: ServerData = {outputList: [], duration: '', changesnumber: ''};
 
   errorMessage = '';
@@ -148,6 +152,11 @@ export class QueryService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  setQeryString(oldQ: string, newQ: string) {
+    this.oldquery = oldQ;
+    this.newquery = newQ;
   }
 
   setnewSearch (flag: boolean) {

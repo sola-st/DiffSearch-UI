@@ -42,6 +42,12 @@ export class QueryComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    // empty or saved strings
+    this.oldcontent = this.queryService.oldquery;
+    this.newcontent = this.queryService.newquery;
+  }
+
   ngOnInit(): void {
     this.selectedLanguage = 'Java';
     this.examples = this.exampleService.getExamples();
@@ -58,6 +64,9 @@ export class QueryComponent implements OnInit {
   }
 
   onSearchClick(oldstring: string, newstring: string, language: string): void {
+    // save the query string for re-route
+    this.queryService.setQeryString(oldstring, newstring);
+
     this.queryService.getResult(oldstring.trim(), newstring.trim(), language);
   }
 
