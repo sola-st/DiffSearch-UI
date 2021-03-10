@@ -53,9 +53,11 @@ div.about {
 
 .header-image {
   background-size: cover;
-  background-color: whitesmoke;
+  background-color: lightgray;
 }
 
 a {
- color : mat-color($primary-palette);
+ //color : mat-color($primary-palette);
+ color : black;
+ text-decoration: none;
 }
