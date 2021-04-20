@@ -17,32 +17,112 @@ table {
   background-color: transparent !important;
 }
 
-.word-breakall {
-  word-break: break-word !important;
+.mat-column-old {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 35% !important;
+  width: 35% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
-// .old {
-//   // color: brown;
-//   color: red;
+.mat-column-new {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 35% !important;
+  width: 35% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.mat-column-arrow {
+  flex: 0 0 8% !important;
+  width: 8% !important;
+}
+
+.mat-column-minus {
+  flex: 0 0 2% !important;
+  width: 2% !important;
+}
+
+.mat-column-plus {
+  flex: 0 0 2% !important;
+  width: 2% !important;
+}
+
+.mat-column-link {
+  flex: 0 0 10% !important;
+  width: 10% !important;
+}
+
+// .word-breakall {
+//   word-break: break-word !important;
 // }
 
-// .new {
-//   // color: forestgreen;
-//   color: green
-// }
 .minus {
-  color: red;
-  font-weight:bold;
+  color: red!important;
+  font-weight: bold;
+  margin-left: -1em;
 }
 
 .plus {
   color: green;
+  font-weight: bold;
+}
+
+.link {
+  background-color: transparent !important;
+  margin-top: -8px;
+}
+
+// Mobile
+.mat-column-code {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 80% !important;
+  width: 80% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+td.align-left {
+ text-align: left;
+ margin: 0px;
+}
+
+td.symbol {
+  width: 10px;
+}
+
+.minus_mobile {
+  color: red!important;
   font-weight:bold;
 }
 
- .link {
+.plus_mobile {
+  color: green;
+  font-weight:bold;
+}
+
+ .link_mobile {
   background-color: transparent !important;
+  margin-left: -25px;
  }
+
+pre {
+  white-space: pre-wrap;
+  display: inline;
+  font-size: 0.9em !important;
+}
+
+pre.prettyprint {
+  border: none !important;
+  padding: 0px !important;
+  //display: inline;
+}
 
 .paginator {
   width: 100%;

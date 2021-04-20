@@ -20,6 +20,9 @@ export class QueryService {
   oldquery = '';
   newquery = '';
 
+  // save the selected language (Java is default)
+  language = 'Java';
+
   serverdata: ServerData = {outputList: [], duration: '', changesnumber: ''};
 
   errorMessage = '';
@@ -80,13 +83,14 @@ export class QueryService {
     this.serverdata = {outputList: [], duration: '', changesnumber: ''};
     this.noChanges = false;
     this.errorMessage = '';
+    // new search
     this.setnewSearch(true);
+    this.language = language;
+
     this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
-      // console.log (rd);
       this.loading = false; // for spinner in query.componente
       if (rd != null) {
-        // console.log (rd.outputList.length);
         this.serverdata = rd;
         this.setnewSearch(true);
         if (rd.outputList != null) {

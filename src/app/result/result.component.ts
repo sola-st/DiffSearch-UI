@@ -1,11 +1,18 @@
 // import { Component, OnInit } from '@angular/core';
-import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
+// import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit,  AfterViewChecked} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {ResultData} from '../resultdata';
 import { QueryService } from '../query.service';
 // import { getLocaleDateFormat } from '@angular/common';
+
+import { BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+
+import { js_beautify } from "js-beautify";
+
+declare const PR: any;
 
 @Component({
   selector: 'ds-result',
@@ -14,7 +21,9 @@ import { QueryService } from '../query.service';
 })
 
 export class ResultComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['old', 'arrow', 'new', 'link'];
+  displayedColumns: string[] = ['minus', 'old', 'arrow', 'plus','new', 'link'];
+  displayedColumnsMobile: string[] = ['code'];
+  // displayedColumns: string[] = ['code'];
   codechanges: ResultData[] = [];
 
   duration = '';
@@ -23,10 +32,20 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<ResultData>(this.codechanges);
 
+  public isMobile = false;
+
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private queryService: QueryService) { }
+  constructor(
+    private queryService: QueryService,
+    private breakpointObserver: BreakpointObserver)  {
+      breakpointObserver.observe([
+        Breakpoints.XSmall
+      ]).subscribe(result => {
+        this.isMobile = result.matches;
+      });
+    }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -38,12 +57,15 @@ export class ResultComponent implements OnInit, AfterViewInit {
     this.tablesize = this.dataSource.data.length;
   }
 
+  public ngAfterViewChecked(): any {
+    PR.prettyPrint();
+  }
+
   ngOnInit () {
 
   }
 
   getData(): MatTableDataSource<ResultData> {
-    //console.log (this.queryService.getCodeChanges());
     if (this.queryService.isnewSearch()) {
       this.codechanges = this.queryService.getCodeChanges();
       // set the duration and changes number
@@ -57,6 +79,31 @@ export class ResultComponent implements OnInit, AfterViewInit {
       this.queryService.setnewSearch(false);
     }
     return this.dataSource;
+  }
+
+  beautify(resultString: string): string {
+    let lineLength = 50;
+    let breakchainedMethods = false;
+
+    if (this.isMobile) {
+      lineLength = 40;
+      breakchainedMethods = true;
+    } else {
+      if (resultString.length > 50) {
+        breakchainedMethods = true;
+      }
+    }
+
+    if ((this.queryService.language == 'Java') || (this.queryService.language == 'JavaScript')) {
+      return js_beautify(resultString,
+        { indent_size: 2,
+          wrap_line_length: lineLength,
+          brace_style: "collapse",
+          break_chained_methods: breakchainedMethods
+        });
+    }
+    // for python do nothing for now
+    return resultString;
   }
 
   getErrorMessage(): string {
