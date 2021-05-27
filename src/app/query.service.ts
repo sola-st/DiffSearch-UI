@@ -139,8 +139,39 @@ export class QueryService {
 
   // }
   getQueryResult(oldquery: string, newquery: string, language: string): Observable<ServerData> {
+    let url = this.queryUrl;
+    if (url.indexOf ('localhost') < 0) {
+      // production mode
+      null;
+      // activate the code below if the Apache server on soladif
+      // has been reconfigured (api_java, api_javascript, api_python)
+      //
+      // *** from here ***
+      // if (language == 'Java') {
+      //   url = url + "_java";
+      // } else if (language == 'JavaScript') {
+      //   url = url + "_javascript";
+      // } else if (language == 'Python') {
+      //   url = url + "_python";
+      // } else { // default
+      //   url = url + "_java";
+      // }
+      // *** to here ***
+    } else {
+      // development mode
+      if (language == 'Java') {
+        url = "http://localhost:8843";
+      } else if (language == 'JavaScript') {
+        url = "http://localhost:8845";
+      } else if (language == 'Python') {
+        url = "http://localhost:8844";
+      } else { // default
+        url = "http://localhost:8843";
+      }
+    }
     const params = new HttpParams().set('Text1', oldquery).set('Text2', newquery).set('Language', language);
-    return this.http.get<ServerData>(this.queryUrl, {params})
+    // return this.http.get<ServerData>(this.queryUrl, {params})
+    return this.http.get<ServerData>(url, {params})
       .pipe(
         catchError(this.handleError<ServerData>('getQeryResult')));
   }

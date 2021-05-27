@@ -2,11 +2,15 @@
 <div class="ds-content">
   <section>
     <label>Languages:</label>
-    <mat-radio-group [(ngModel)]="selectedLanguage" #radioGroup="matRadioGroup">
+    <mat-radio-group [(ngModel)]="selectedLanguage" #radioGroup="matRadioGroup" (change)="radioButtonchanged()">
       <!-- currently only Java to select -> set disable -->
-      <mat-radio-button class="language-margin" *ngFor="let language of languages"
+      <!-- <mat-radio-button class="language-margin" *ngFor="let language of languages"
       [value]="language"
       [disabled]= "language == 'JavaScript' || language == 'Python'">
+        {{language}}
+      </mat-radio-button> -->
+      <mat-radio-button class="language-margin" *ngFor="let language of languages"
+      [value]="language">
         {{language}}
       </mat-radio-button>
     </mat-radio-group>
