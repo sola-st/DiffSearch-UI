@@ -17,7 +17,7 @@ import { Grammar, GRAMMAR} from '../grammar';
 export class QueryComponent implements OnInit {
   selectedLanguage: string;
   languages: string[] = ['Java', 'JavaScript', 'Python'];
-  public selection: string;
+  // public selection: string;
 
   public isMobile = false;
 
@@ -50,7 +50,7 @@ export class QueryComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedLanguage = 'Java';
-    this.examples = this.exampleService.getExamples();
+    this.examples = this.exampleService.getExamples(this.selectedLanguage);
   }
 
   onExampleClick(n: number): void {
@@ -84,5 +84,11 @@ export class QueryComponent implements OnInit {
 
   getloading(): boolean {
     return this.queryService.loading;
+  }
+
+  radioButtonchanged() {
+    this.examples = this.exampleService.getExamples(this.selectedLanguage);
+    this.oldcontent = '';
+    this.newcontent = '';
   }
 }
