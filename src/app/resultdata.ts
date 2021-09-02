@@ -1,10 +1,12 @@
+import * as internal from "events";
+
 export interface ResultData {
-  url: string;
-  hunkLines: string;
-  codeChangeOld: string;
-  codeChangeNew: string;
-  query: string;
-  fullChangeString: string;
-  rank: number;
-  numberOfCandidateChanges: number;
+  c: string; // commit
+  o: string; // codeChangeOld
+  n: string; // codeChangeNew
+  p: string; // projectname
+  fn: string; // fileNameNew
+  f: string; // fileNameOld
+  l: number; // lineOld
+  lN: number; // lineNew
 }

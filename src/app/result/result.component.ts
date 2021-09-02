@@ -1,3 +1,4 @@
+import { ComponentFixture } from '@angular/core/testing';
 // import { Component, OnInit } from '@angular/core';
 // import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import {AfterViewInit, Component, ViewChild, OnInit,  AfterViewChecked} from '@angular/core';
@@ -33,6 +34,8 @@ export class ResultComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<ResultData>(this.codechanges);
 
   public isMobile = false;
+
+  readonly GITHUB= 'https://github.com/';
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -106,6 +109,21 @@ export class ResultComponent implements OnInit, AfterViewInit {
     return resultString;
   }
 
+  computeUrl (commit: string, project: string): string {
+    // compute the url to GitHub
+    return this.GITHUB + project.replace(".","/") + "/commit/" + commit;
+  }
+
+  getTooltip (filenameOld: string, lineOld: string,
+    filenameNew: string, lineNew: string): string {
+      console.log (filenameOld);
+      console.log (filenameNew);
+    if (filenameNew == null) {
+      return filenameOld + ": -" + lineOld + "," + "+" + lineNew;
+    }
+    return filenameOld + ": -" + lineOld + "," + filenameNew + ": +" + lineNew;
+  }
+
   getErrorMessage(): string {
     return this.queryService.errorMessage;
   }
@@ -117,20 +135,24 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
 // example data
 const ELEMENT_DATA: ResultData[] = [
-  {url: 'https://github.com/quarkusio/quarkus/commit/8b3d76af5e8f056334cc6ca39b78b90eedd8136a',
-  hunkLines: '-120,15 +120,15',
-  codeChangeOld: 'assertEquals(numberOfSegments,2);',
-  codeChangeNew: 'assertEquals(2,numberOfSegments);',
-  query: '',
-  fullChangeString: '',
-  rank: 0,
-  numberOfCandidateChanges: 0},
-  {url: 'https://github.com/quarkusio/quarkus/commit/1c89c51f6626fed09d594ea69289da13736d613b',
-  hunkLines: '-0,0 +1,34',
-  codeChangeOld: 'assertFalse(deployed,\"Shouldnotdeployinvalidrule\");',
-  codeChangeNew: 'assertFalse(\"Shouldnotdeployinvalidrule\",deployed);',
-  query: '',
-  fullChangeString: '',
-  rank: 0,
-  numberOfCandidateChanges: 0}
+  {c: 'https://github.com/quarkusio/quarkus/commit/8b3d76af5e8f056334cc6ca39b78b90eedd8136a',
+  o: 'assertEquals(numberOfSegments,2);',
+  n: 'assertEquals(2,numberOfSegments);',
+  // query: '',
+  p : '',
+  fn: '',
+  f: '',
+  l: 0,
+  lN: 0},
+  //numberOfCandidateChanges: 0},
+  {c: 'https://github.com/quarkusio/quarkus/commit/1c89c51f6626fed09d594ea69289da13736d613b',
+  o: 'assertFalse(deployed,\"Shouldnotdeployinvalidrule\");',
+  n: 'assertFalse(\"Shouldnotdeployinvalidrule\",deployed);',
+  // query: '',
+  p : '',
+  fn: '',
+  f: '',
+  l: 0,
+  lN: 0}
+  // numberOfCandidateChanges: 0}
 ];
