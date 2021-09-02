@@ -152,7 +152,9 @@
    {{i + 1}}
 </button> -->
   <section>
-    <p>Examples:</p>
+    <p *ngIf="examples.length > 0">
+      Examples:
+    </p>
     <!-- <label>Examples:</label> -->
     <mat-radio-group #radioGroup="matRadioGroup">
       <mat-radio-button class="example" color="primary" *ngFor="let ex of examples; let i = index"

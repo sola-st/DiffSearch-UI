@@ -21,30 +21,19 @@ export const EXAMPLES_JAVA: Example[] = [
 
 // Only for testing the functionality
 export const EXAMPLES_JAVASCRIPT: Example[] = [
-  { query: 'JavaScript 1', old: 'ID();', new: 'ID();'},
-  { query: 'JavaScript 2', old: 'ID binOP<0> LT;', new: 'ID binOP<1> LT;'},
-  { query: 'JavaScript 3', old: 'if(EXPR<0>){ID OP LT;}', new: 'if(EXPR<1>){ID OP LT;}'},
-  { query: 'JavaScript 4', old: 'if(EXPR<0>){<...>}', new: 'if(EXPR<1>){<...>}'},
-  { query: 'JavaScript 5', old: 'ID = ID;', new: 'ID = ID;'},
-  { query: 'JavaScript 6', old: '<...>', new: 'try { <...> } catch (ID ID) { <...> }'},
-  { query: 'JavaScript 7', old: 'while (ID()) {', new: 'while (ID(<...>)) {'},
-  { query: 'JavaScript 8', old: 'unOP EXPR<0>;', new: 'unOP EXPR<0>;'},
-  { query: 'JavaScript 9', old: '_ ', new: 'EXPR(ID);'},
+  { query: 'JavaScript 1', old: '_', new: 'ID.ID = <...>; _'},
+  { query: 'JavaScript 2', old: '_', new: 'ID.ID = LT;'},
+  { query: 'JavaScript 3', old: 'ID<0>: LT', new: 'ID<0>: LT'},
+  { query: 'JavaScript 4', old: 'this.ID<0>(EXPR);', new: 'this.ID<0>(EXPR);'},
+  { query: 'JavaScript 5', old: 'if (ID) { ID.ID(<...>);', new: '<...>'},
+  { query: 'JavaScript 6', old: '<...> = EXPR<0>;', new: '<...> = EXPR<0> binOP EXPR;'},
+  { query: 'JavaScript 7', old: 'return EXPR;', new: '_'},
+  { query: 'JavaScript 8', old: 'ID.ID(<...>);', new: '_'},
+  { query: 'JavaScript 9', old: 'ID();', new: '_'},
   { query: 'JavaScript 10', old: 'ID<0>.ID<1>(<...>);', new: 'ID<2>.ID<1>(<...>);'},
 
 
 ];
 
 // Only for testing the functionality
-export const EXAMPLES_PYTHON: Example[] = [
-  { query: 'Python 1', old: 'ID()' , new: 'ID()'},
-  { query: 'Python 2', old: 'ID binOP LT', new: 'ID binOP LT'},
-  { query: 'Python 3', old: 'ID = ID', new: 'ID = ID'},
-  { query: 'Python 4', old: '<...>', new: 'try: <...> except (ID): <...>'},
-  { query: 'Python 5', old: 'if ID != null:', new: 'if ID == null:'},
-  { query: 'Python 6', old: 'if EXPR != null:', new: 'if EXPR == null:'},
-  { query: 'Python 7', old: '_', new: 'EXPR(EXPR);'},
-  { query: 'Python 8', old: 'while EXPR:', new: 'while ID(<...>):'},
-  { query: 'Python 9', old: 'EXPR<0> binOP EXPR<1>', new: 'EXPR<0> binOP EXPR<1>'},
-  { query: 'Python 10', old: 'unOP EXPR<0>', new: 'unOP EXPR<0>'},
-];
+export const EXAMPLES_PYTHON: Example[] = [];
