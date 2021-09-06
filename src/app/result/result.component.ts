@@ -116,8 +116,6 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   getTooltip (filenameOld: string, lineOld: string,
     filenameNew: string, lineNew: string): string {
-      console.log (filenameOld);
-      console.log (filenameNew);
     if (filenameNew == null) {
       return filenameOld + ": -" + lineOld + "," + "+" + lineNew;
     }

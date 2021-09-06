@@ -89,7 +89,6 @@ export class QueryService {
     this.getQueryResult(queryold, querynew, language)
     .subscribe(rd => {
       this.loading = false; // for spinner in query.componente
-      console.log(rd);
       if (rd != null) {
         this.serverdata = rd;
         this.setnewSearch(true);
