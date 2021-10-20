@@ -141,20 +141,19 @@ export class QueryService {
     let url = this.queryUrl;
     if (url.indexOf ('localhost') < 0) {
       // production mode
-      null;
       // activate the code below if the Apache server on soladif
       // has been reconfigured (api_java, api_javascript, api_python)
       //
       // *** from here ***
-      // if (language == 'Java') {
-      //   url = url + "_java";
-      // } else if (language == 'JavaScript') {
-      //   url = url + "_javascript";
-      // } else if (language == 'Python') {
-      //   url = url + "_python";
-      // } else { // default
-      //   url = url + "_java";
-      // }
+      if (language == 'Java') {
+         url = url + "_java";
+      } else if (language == 'JavaScript') {
+         url = url + "_javascript";
+      } else if (language == 'Python') {
+         url = url + "_python";
+      } else { // default
+         url = url + "_java";
+      }
       // *** to here ***
     } else {
       // development mode
