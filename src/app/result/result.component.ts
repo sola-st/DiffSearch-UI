@@ -97,22 +97,23 @@ export class ResultComponent implements OnInit, AfterViewInit {
       }
     }
 
-    if ((this.queryService.language == 'Java') || (this.queryService.language == 'JavaScript')) {
+    // if ((this.queryService.language == 'Java') || (this.queryService.language == 'JavaScript')) {
+      // use js_beautifiy for all languages (for python it is not optimal (but better than no formatting))
       return js_beautify(resultString,
         { indent_size: 2,
           wrap_line_length: lineLength,
           brace_style: "collapse",
           break_chained_methods: breakchainedMethods
         });
-    }
-    // for python do nothing for now
+    // }
+
     return resultString;
   }
 
-  computeUrl (commit: string, project: string): string {
-    // compute the url to GitHub
-    return this.GITHUB + project.replace(".","/") + "/commit/" + commit;
-  }
+  // computeUrl (commit: string, project: string): string {
+  //   // compute the url to GitHub
+  //   return this.GITHUB + project.replace(".","/") + "/commit/" + commit;
+  // }
 
   getTooltip (filenameOld: string, lineOld: string,
     filenameNew: string, lineNew: string): string {

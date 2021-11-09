@@ -1,7 +1,7 @@
 import * as internal from "events";
 
 export interface ResultData {
-  c: string; // commit
+  c: string; // commit url
   o: string; // codeChangeOld
   n: string; // codeChangeNew
   p: string; // projectname

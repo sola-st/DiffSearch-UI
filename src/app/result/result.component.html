@@ -1,9 +1,7 @@
-<!-- {{dataSource.data.length}} -->
 <div>
 <div *ngIf="getErrorMessage().length">
   <p><span class="error-msg">{{getErrorMessage()}}</span></p>
 </div>
-<!-- <div class="info" *ngIf="dataSource.data.length"> -->
 <div class="info" *ngIf="tablesize">
   <span class="accent">{{codechanges.length}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
   <span class="accent">{{changesnumber}} code changes</span>:
@@ -21,7 +19,6 @@
 <!-- <p>Tabelle</p> -->
 <!-- <div class="mat-elevation-z8"> -->
 <div>
-  <!-- <table mat-table [dataSource]="dataSource"> -->
   <table mat-table [dataSource]=getData() *ngIf="(!isMobile); else mobile_template">
     <ng-container matColumnDef="minus">
       <th mat-header-cell *matHeaderCellDef> </th>
@@ -33,7 +30,6 @@
     <ng-container matColumnDef="old">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td valign=top mat-cell *matCellDef="let element">
-        <!-- <pre class="prettyprint">{{beautify(element.codeChangeOld)}}</pre> -->
         <pre class="prettyprint">{{beautify(element.o)}}</pre>
       </td>
     </ng-container>
@@ -56,7 +52,6 @@
     <ng-container matColumnDef="new">
       <th mat-header-cell *matHeaderCellDef></th>
       <td valign=top mat-cell *matCellDef="let element">
-        <!-- <pre class="prettyprint">{{beautify(element.codeChangeNew)}}</pre> -->
         <pre class="prettyprint">{{beautify(element.n)}}</pre>
       </td>
     </ng-container>
@@ -64,10 +59,8 @@
     <ng-container matColumnDef="link">
       <th mat-header-cell *matHeaderCellDef></th>
       <td valign=top mat-cell *matCellDef="let element">
-        <!-- <a class = "link" mat-flat-button href="{{element.url}}" target="_blank"> -->
-          <a class = "link" mat-flat-button href="{{computeUrl(element.c, element.p)}}" target="_blank">
+	<a class = "link" mat-flat-button href="{{element.c}}" target="_blank">
           <mat-icon matTooltip="{{getTooltip(element.f, element.l, element.fn, element.lN)}}">
-          <!-- <mat-icon> -->
             open_in_new
           </mat-icon>
         </a>
@@ -76,10 +69,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
   </table>
-  <!-- </mat-table> -->
   <!-- paginator -->
   <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [ngStyle]="{display: dataSource.data.length > 0 ? 'block' : 'none'}"></mat-paginator>
 </div>
@@ -96,7 +86,6 @@
             <span class="minus_mobile"> - </span>
           </td>
           <td valign=top class="align-left">
-            <!-- <pre class="prettyprint">{{beautify(element.codeChangeOld)}}</pre> -->
             <pre class="prettyprint">{{beautify(element.o)}}</pre>
           </td>
         </tr>
@@ -105,14 +94,12 @@
             <span class="plus_mobile"> + </span>
           </td>
           <td valign=top class="align-left">
-            <!-- <pre class="prettyprint">{{beautify(element.codeChangeNew)}}</pre> -->
             <pre class="prettyprint">{{beautify(element.n)}}</pre>
           </td>
         </tr>
         <tr>
           <td valign=top class="align-left symbol">
-            <!-- <a class = "link_mobile" mat-flat-button href="{{element.url}}" target="_blank"> -->
-            <a class = "link_mobile" mat-flat-button href="{{computeUrl(element.c, element.p)}}" target="_blank">
+	    <a class = "link_mobile" mat-flat-button href="{{element.c}}" target="_blank">
               <!-- <mat-icon matTooltip="{{element.hunkLines}}"> -->
               <mat-icon matTooltip="{{getTooltip(element.f, element.l, element.fN, element.lN)}}">
               <!-- <mat-icon> -->
