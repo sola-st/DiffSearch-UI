@@ -55,7 +55,8 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
     this.codechanges = this.queryService.getCodeChanges();
     this.duration = this.queryService.serverdata.duration;
-    this.changesnumber = this.queryService.serverdata.changesnumber;
+    this.changesnumber = this.formatNumber
+      (this.queryService.serverdata.changesnumber);
     this.dataSource.data = this.codechanges;
     this.tablesize = this.dataSource.data.length;
   }
@@ -74,7 +75,8 @@ export class ResultComponent implements OnInit, AfterViewInit {
       // set the duration and changes number
       // reset the new search flag
       this.duration = this.queryService.serverdata.duration;
-      this.changesnumber = this.queryService.serverdata.changesnumber;
+      this.changesnumber = this.formatNumber
+        (this.queryService.serverdata.changesnumber);
       this.dataSource.data = this.codechanges;
       this.tablesize = this.dataSource.data.length;
 
@@ -114,6 +116,11 @@ export class ResultComponent implements OnInit, AfterViewInit {
   //   // compute the url to GitHub
   //   return this.GITHUB + project.replace(".","/") + "/commit/" + commit;
   // }
+
+  formatNumber (n: string): string {
+    return n.replace(/(.)(?=(\d{3})+$)/g,'$1,');
+  }
+
 
   getTooltip (filenameOld: string, lineOld: string,
     filenameNew: string, lineNew: string): string {
