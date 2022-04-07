@@ -5,33 +5,33 @@ export interface Example {
 }
 
 export const EXAMPLES_JAVA: Example[] = [
-  { query: 'Java 1', old: 'if (ID<0>) { \n<...>', new: 'if (ID<0> && EXPR) { \n<...>'},
-  { query: 'Java 2', old: 'if (ID<0>) { \n<...>', new: 'if (ID<0> || EXPR) { \n<...>'},
-  { query: 'Java 3', old: 'EXPR.ID<0>();', new: 'EXPR.ID<0>();'},
-  { query: 'Java 4', old: 'return ID;', new: 'return null;'},
-  { query: 'Java 5', old: 'EXPR<0>.ID()', new: 'EXPR<0>.ID()'},
-  { query: 'Java 6', old: 'ID<0>();', new: 'ID<0>(<...>);'},
-  { query: 'Java 7', old: 'ID<0>(ID);', new: 'ID<0>();'},
-  { query: 'Java 8', old: 'this.ID<0> = ID.ID(ID<0>);', new: 'this.ID<0> = ID<0>;'},
-  { query: 'Java 9', old: 'final ID<0> ID<1> = EXPR;', new: 'final ID<0> ID<1> = EXPR;'},
-  { query: 'Java 10', old: 'ID(EXPR); ID(EXPR);', new: 'ID(EXPR); ID(EXPR);'},
-  { query: 'Java 11', old: '<...> ID(<...>) {', new: '<...> ID(<...>) throws ID {'},
-  { query: 'Java 12', old: '<...> ID(<...>) throws ID {', new: '<...> ID(<...>) {'},
+  { query: 'Fix incomplete if-condition', old: 'if (ID<0>) { \n  <...>', new: 'if (ID<0> && EXPR) { \n   <...>'},
+  { query: 'Add empty catch', old: '<...>', new: 'try {\n  <...>\n} catch(ID ID) {}'},
+  { query: 'Use more specific assertion', old: 'assert(EXPR);', new: 'assertTrue(EXPR);'},
+  { query: 'Replace base object of method call', old: 'EXPR.ID<0>();', new: 'EXPR.ID<0>();'},
+  { query: 'Return null instead of a variable', old: 'return ID;', new: 'return null;'},
+  { query: 'Change callee', old: 'EXPR<0>.ID()', new: 'EXPR<0>.ID()'},
+  { query: 'Add arguments to call', old: 'ID<0>();', new: 'ID<0>(<...>);'},
+  { query: 'Remove arguments from call', old: 'ID<0>(ID);', new: 'ID<0>();'},
+  { query: 'Replace method call with variable', old: 'this.ID<0> = ID.ID(ID<0>);', new: 'this.ID<0> = ID<0>;'},
+  { query: 'Java 10', old: 'final ID<0> ID<1> = EXPR;', new: 'final ID<0> ID<1> = EXPR;'},
+  { query: 'Modify two consecutive calls', old: 'ID(EXPR); \nID(EXPR);', new: 'ID(EXPR);\nID(EXPR);'},
+  { query: 'Add missing throws clause', old: '<...> ID(<...>) {', new: '<...> ID(<...>) throws ID {'},
+  { query: 'Remove throws clause', old: '<...> ID(<...>) throws ID {', new: '<...> ID(<...>) {'},
 ];
 
 // Only for testing the functionality
 export const EXAMPLES_JAVASCRIPT: Example[] = [
-  { query: 'JavaScript 1', old: 'if (ID<0>) { <...>', new: 'if (ID<0> && EXPR) { <...>'},
-  { query: 'JavaScript 2', old: 'if (ID<0>) { <...>', new: 'if (ID<0> || EXPR) { <...>'},
-  { query: 'JavaScript 3', old: 'EXPR.ID<0>();', new: 'EXPR.ID<0>();'},
-  { query: 'JavaScript 4', old: 'return ID;', new: 'return null;'},
-  { query: 'JavaScript 5', old: 'EXPR<0>.ID()', new: 'EXPR<0>.ID()'},
-  { query: 'JavaScript 6', old: 'ID<0>(ID);', new: 'ID<0>();'},
-  { query: 'JavaScript 7', old: 'this.ID<0> = ID.ID(ID<0>);', new: 'this.ID<0> = ID<0>;'},
-  { query: 'JavaScript 8', old: 'ID<0> = EXPR;', new: 'ID<0> = EXPR;'},
-  { query: 'JavaScript 9', old: 'ID(EXPR); ID(EXPR);', new: 'ID(EXPR); ID(EXPR);'},
-  { query: 'JavaScript 10', old: '<...>', new: 'if (<...>) { throw EXPR'},
-  { query: 'JavaScript 11', old: 'throw EXPR', new: '_'},
+  { query: 'Fix incomplete if-condition', old: 'if (ID<0>) { <...>', new: 'if (ID<0> && EXPR) { <...>'},
+  { query: 'Get rid of eval() call', old: 'eval(<...>)', new: '<...>'},
+  { query: 'Modify string replacement', old: '<...>.replace(<...>, <...>)', new: '<...>.replace(<...>, <...>)'},
+  { query: 'Return null instead of a variable', old: 'return ID;', new: 'return null;'},
+  { query: 'Update require statement', old: 'ID = require(EXPR)', new: 'ID = require(EXPR)'},
+  { query: 'Add second argument to call', old: 'EXPR<0>(EXPR)', new: 'EXPR<0>(EXPR, EXPR)'},
+  { query: 'Replace method call with variable', old: 'this.ID<0> = ID.ID(ID<0>);', new: 'this.ID<0> = ID<0>;'},
+  { query: "Use EcmaScript 6 'let' instead of 'var'", old: 'var ID<0> = EXPR<1>', new: 'let ID<0> = EXPR<1>'},
+  { query: 'Modify two consecutive calls', old: 'ID(EXPR);\nID(EXPR);', new: 'ID(EXPR);\nID(EXPR);'},
+  { query: 'Add a conditional throws', old: '<...>', new: 'if (<...>) {\n  throw EXPR'},
 
 
 ];
