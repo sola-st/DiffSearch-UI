@@ -8,7 +8,7 @@ import { SourceComponent } from './source/source.component';
 const routes: Routes = [
   { path: 'diffsearch', component: DiffsearchComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'source', component: SourceComponent },
+  // { path: 'source', component: SourceComponent },
   { path: '', redirectTo: 'diffsearch', pathMatch: 'full' },
   { path: '**', redirectTo: 'diffsearch'}
 ];

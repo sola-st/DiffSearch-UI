@@ -14,7 +14,6 @@ export const EXAMPLES_JAVA: Example[] = [
   { query: 'Add arguments to call', old: 'ID<0>();', new: 'ID<0>(<...>);'},
   { query: 'Remove arguments from call', old: 'ID<0>(ID);', new: 'ID<0>();'},
   { query: 'Replace method call with variable', old: 'this.ID<0> = ID.ID(ID<0>);', new: 'this.ID<0> = ID<0>;'},
-  { query: 'Java 10', old: 'final ID<0> ID<1> = EXPR;', new: 'final ID<0> ID<1> = EXPR;'},
   { query: 'Modify two consecutive calls', old: 'ID(EXPR); \nID(EXPR);', new: 'ID(EXPR);\nID(EXPR);'},
   { query: 'Add missing throws clause', old: '<...> ID(<...>) {', new: '<...> ID(<...>) throws ID {'},
   { query: 'Remove throws clause', old: '<...> ID(<...>) throws ID {', new: '<...> ID(<...>) {'},
