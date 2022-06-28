@@ -1,10 +1,21 @@
 <div>
-<div *ngIf="getErrorMessage().length">
-  <p><span class="error-msg">{{getErrorMessage()}}</span></p>
-</div>
-<div class="info" *ngIf="tablesize">
-  <span class="accent">{{codechanges.length}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
-  <span class="accent">{{changesnumber}} code changes</span>:
+  <div *ngIf="getErrorMessage().length">
+    <p><span class="error-msg">{{getErrorMessage()}}</span></p>
+  </div>
+  <div class="info" *ngIf="tablesize">
+    <span class="accent">{{codechanges.length}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
+    <span class="accent">{{changesnumber}} code changes</span>:
+    <!--DOWNLOAD BUTTON-->
+    <div class="button-container">
+      <a mat-raised-button class="download-button"
+        [href]="downloadUrl"
+        [download]="fileName"
+        title="Download results as JSON file {{ fileName }}">
+        Download results as JSON file
+      </a>
+    </div>
+  </div>
+  <!-- DOWNLOAD BUTTON-->
 </div>
 <div class="info" *ngIf="emptyResult()">
   No Matching Code changes found in <span class="accent" >{{duration}} seconds.</span>
@@ -59,10 +70,11 @@
     <ng-container matColumnDef="link">
       <th mat-header-cell *matHeaderCellDef></th>
       <td valign=top mat-cell *matCellDef="let element">
-	<a class = "link" mat-flat-button href="{{element.c}}" target="_blank">
+        <!-- <a class = "link" mat-flat-button href="{{computeUrl(element.c, element.p)}}" target="_blank"> -->
+        <a class = "link" mat-flat-button href="{{element.c}}" target="_blank">
           <mat-icon matTooltip="{{getTooltip(element.f, element.l, element.fn, element.lN)}}">
-            open_in_new
-          </mat-icon>
+           open_in_new
+        </mat-icon>
         </a>
       </td>
     </ng-container>
@@ -99,10 +111,8 @@
         </tr>
         <tr>
           <td valign=top class="align-left symbol">
-	    <a class = "link_mobile" mat-flat-button href="{{element.c}}" target="_blank">
-              <!-- <mat-icon matTooltip="{{element.hunkLines}}"> -->
+            <a class = "link_mobile" mat-flat-button href="{{element.c}}" target="_blank">
               <mat-icon matTooltip="{{getTooltip(element.f, element.l, element.fN, element.lN)}}">
-              <!-- <mat-icon> -->
                 open_in_new
               </mat-icon>
             </a>

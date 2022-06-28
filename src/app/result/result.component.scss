@@ -132,3 +132,13 @@ pre.prettyprint {
   background-color: transparent !important;
   }
 
+  .button-container {
+    text-align:center;
+    margin-top: 10px;
+    padding: 2px;
+  }
+
+  .download-button {
+    background-color: mat-color($accent-palette, 100);
+    font-weight:200;
+  }

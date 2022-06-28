@@ -1,13 +1,13 @@
-import { ComponentFixture } from '@angular/core/testing';
-// import { Component, OnInit } from '@angular/core';
-// import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
+
 import {AfterViewInit, Component, ViewChild, OnInit,  AfterViewChecked} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser"; // cj
+
+
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {ResultData} from '../resultdata';
 import { QueryService } from '../query.service';
-// import { getLocaleDateFormat } from '@angular/common';
 
 import { BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
@@ -25,7 +25,7 @@ export class ResultComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['minus', 'old', 'arrow', 'plus','new', 'link'];
   displayedColumnsMobile: string[] = ['code'];
   // displayedColumns: string[] = ['code'];
-  codechanges: ResultData[] = [];
+  private codechanges: ResultData[] = [];
 
   duration = '';
   changesnumber = '';
@@ -35,14 +35,20 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   public isMobile = false;
 
-  readonly GITHUB= 'https://github.com/';
+  // readonly GITHUB= 'https://github.com/';
+
+  // for download JSON file
+  private downloadUrl: SafeUrl;
+  private blobUrl: string;
+  private fileName = "diffsearch";
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private queryService: QueryService,
-    private breakpointObserver: BreakpointObserver)  {
+    private breakpointObserver: BreakpointObserver,
+    private sanitizer: DomSanitizer)  {
       breakpointObserver.observe([
         Breakpoints.XSmall
       ]).subscribe(result => {
@@ -82,6 +88,9 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
       // reset the new search flag
       this.queryService.setnewSearch(false);
+
+      // generate Blob URL
+      this.generateUrl();
     }
     return this.dataSource;
   }
@@ -136,6 +145,29 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   emptyResult(): boolean {
     return this.queryService.noChanges;
+  }
+
+  generateUrl() {
+    // Revokes the previous URL object, if any
+    if (this.blobUrl) {
+      window.URL.revokeObjectURL(this.blobUrl);
+      this.blobUrl = undefined;
+    }
+    let res = this.codechanges;
+    this.fileName = "diffsearch.json";
+
+    let data = JSON.stringify(res);
+    const bytes = new TextEncoder().encode(data);
+
+    let blob = new Blob([bytes], { type: 'application/json'});
+    this.blobUrl= window.URL.createObjectURL(blob);
+    let uri:SafeUrl = this.sanitizer.bypassSecurityTrustUrl(this.blobUrl);
+    this.downloadUrl = uri;
+  }
+
+  ngOnDestroy() {
+    // Revokes the URL object
+    if(this.blobUrl) { window.URL.revokeObjectURL(this.blobUrl); }
   }
 }
 
