@@ -37,45 +37,22 @@ export class QueryService {
 
   loading = false; // for spinner in query.componente
 
-  constructor(private http: HttpClient) { }
+  // Filter
+  options: Option[] = [
+    {value: 'included', text: 'included'},
+    {value: 'notincluded', text: 'not included'}
+  ]
 
-  // getResult(queryold: string, querynew: string): void{
-  //   // console.log('in getResult');
-  //   // reset all variables
-  //   this.duration = '';
-  //   this.changesnumber = '';
-  //   this.resultdata = [];
-  //   this.errorMessage = '';
-  //   this.noChanges = false;
+  filterdata: Filter [] = [
+    {key: 'cm', name: 'Commit message', changed: false, placeholder: 'commit message contains this text', data: '', option: this.options[0].value},
+    {key: 'f', name: 'File path', changed: false, placeholder: '/foo/bar/main.java', data: '', option: this.options[0].value}
+  ]
 
-  //   // the last entry contains the duration information
-  //   this.getQueryResult(queryold, querynew)
-  //   .subscribe(rd => {
-  //     console.log (rd);
-  //     console.log (rd.length);
-  //     if (rd.length === 1) {  // contains only the duration entry
-  //       this.noChanges = true;
-  //       this.duration = rd[0].url;
-  //       this.changesnumber = rd[0].hunkLines;
-  //     } else if ((rd.length === 2) && (rd[0].url.startsWith('The query is not correct'))) {
-  //       this.errorMessage = rd[0].url;  // message in rd[0]
-  //       this.duration = rd[1].url; // duration info in last entry
-  //       this.changesnumber = rd[1].hunkLines;
+  isFilter : boolean = false;
+  matchoption: string = "all"; // 'all' or 'one'; default: 'all'
+  applynewFilter; boolean = false; // an new  filter has to apply
 
-  //     // }else if ((rd.length === 1) && (rd[0].url.startsWith('No Matching '))) {
-  //     //   this.errorMessage = rd[0].url;  // message in rd[0]
-  //     } else {
-  //       this.resultdata = rd;
-  //       this.duration = rd[rd.length-1].url; // duration info in last entry
-  //       this.changesnumber = rd[rd.length-1].hunkLines;
-  //       this.resultdata.pop();
-  //       console.log (rd);
-  //     }
-  //   });
-  //   // this.getQueryResult(queryold, querynew)
-  //   //  .subscribe(rd => {this.resultdata = rd;});
-  //    // console.log ('url ' + this.resultdata[0].url);
-  // }
+  constructor(private http: HttpClient) {}
 
   getResult(queryold: string, querynew: string, language: string): void{
     // reset all variables
@@ -120,23 +97,6 @@ export class QueryService {
     return this.serverdata.outputList;
   }
 
-  // getQueryResult(oldquery: string, newquery: string): Observable<ResultData[]> {
-  //   // console.log (oldquery + '->' + newquery);
-  //   const params = new HttpParams().set('Text1', oldquery).set('Text2', newquery);
-  //   // console.log(params);
-  //   return this.http.get<ResultData[]>(this.queryUrl, {params})
-  //     .pipe(
-  //       catchError(this.handleError<ResultData[]>('getQeryResult', [])));
-  //   // return this.http.get<ResultData[]>(this.queryUrl, {params})
-  //   //   .pipe(
-  //   //     catchError(this.handleError<ResultData[]>('getQeryResult', []))
-  //   //    );
-  //   //    .subscribe(rd => { console.log (rd); this.resultdata = rd; });
-  //   //   .pipe(
-  //   //     catchError(this.handleError<ResultData[]>('getQeryResult', []))
-  //   //    );
-
-  // }
   getQueryResult(oldquery: string, newquery: string, language: string): Observable<ServerData> {
     let url = this.queryUrl;
     if (url.indexOf ('localhost') < 0) {
@@ -203,9 +163,41 @@ export class QueryService {
   getloading(): boolean {
     return this.loading;
   }
+
+  // Filter
+  setFilterData(fd: Filter[]) {
+    this.filterdata = fd;
+  }
+
+  resetFilterdata() {
+    this.filterdata = [];
+  }
+
+  setisFilter() {
+    this.isFilter = true;
+  }
+
+  resetisFilter() {
+    this.isFilter = false;
+  }
 }
+
 export interface ServerData {
   outputList: ResultData[];
   duration: string;
   changesnumber: string;
+}
+
+export interface Filter {
+  key: string;
+  name: string;
+  changed : boolean;
+  placeholder: string;
+  data : string;
+  option: string
+}
+
+export interface Option {
+  value: string;
+  text: string;
 }

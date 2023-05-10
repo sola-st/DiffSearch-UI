@@ -3,14 +3,15 @@
     <p><span class="error-msg">{{getErrorMessage()}}</span></p>
   </div>
   <div class="info" *ngIf="tablesize">
-    <span class="accent">{{codechanges.length}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
+    <!--<span class="accent">{{codechanges.length}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of -->
+    <span class="accent">{{tablesize}}</span> Code changes found in <span class="accent" >{{duration}} seconds</span> using a data set of
     <span class="accent">{{changesnumber}} code changes</span>:
     <!--DOWNLOAD BUTTON-->
     <div class="button-container">
       <a mat-raised-button class="download-button"
         [href]="downloadUrl"
         [download]="fileName"
-        title="Download results as JSON file {{ fileName }}">
+	title="Download results as JSON file {{ fileName }} (set filters are considered)">
         Download results as JSON file
       </a>
     </div>
@@ -20,15 +21,6 @@
 <div class="info" *ngIf="emptyResult()">
   No Matching Code changes found in <span class="accent" >{{duration}} seconds.</span>
 </div>
-<!-- <div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"></table>
-</div> -->
-<!-- <mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="placeholder" #input>
-</mat-form-field> -->
-<!-- <p>Tabelle</p> -->
-<!-- <div class="mat-elevation-z8"> -->
 <div>
   <table mat-table [dataSource]=getData() *ngIf="(!isMobile); else mobile_template">
     <ng-container matColumnDef="minus">

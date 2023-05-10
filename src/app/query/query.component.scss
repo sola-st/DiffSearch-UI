@@ -48,7 +48,7 @@
   display: flex;
   margin-bottom: -0.8em;
   margin-right: -1.0em;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 // #search-btn {
@@ -121,4 +121,49 @@
   color: black;
   max-width: 400px;
   margin-bottom: 10px;
+}
+
+.filter-table {
+  background-color: transparent !important;
+}
+
+.filter-table-mobile {
+  width: 100%;
+  background-color: transparent !important;
+}
+
+.apply-btn {
+  background-color: mat-color($primary-palette, 50);
+  margin-top: 3px;
+}
+
+.data-column {
+  padding-left: 3px;
+}
+
+td.mat-cell {
+  border-bottom-style: none;
+}
+
+.option-form-field {
+  width: 120px;
+  margin-left:3px;
+}
+
+.option-form-field-mobile {
+  margin-top: -20px;
+}
+
+.match-option-select {
+  appearance: none;
+  padding: 4px;
+  font-size: 14px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: transparent;
+  border-color:lightgrey;
+  border-radius: 5px;
+  height: 25px;
+  width: 35px;
+  text-align-last: center;
 }

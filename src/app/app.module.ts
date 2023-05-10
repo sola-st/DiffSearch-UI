@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatGridListModule } from '@angular/material/grid-list';
 // import { FormsModule } from '@angular/forms';
 
@@ -20,6 +21,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { QueryComponent } from './query/query.component';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -52,6 +54,7 @@ import { FooterComponent } from './footer/footer.component';
     MatIconModule,
     MatListModule,
     MatButtonModule,
+    MatCheckboxModule,
     LayoutModule,
     FormsModule,
     MatRadioModule,
@@ -63,6 +66,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     MatCardModule,
     MatGridListModule,
+    MatSelectModule,
     MatProgressSpinnerModule
   ],
 
