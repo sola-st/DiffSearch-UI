@@ -41,13 +41,20 @@ div.about {
   background-color: transparent !important;
 }
 
-.web-interface {
-  margin-top: 5rem;
+.contributors-wrapper {
+  padding-top: 20px;
   text-align: center;
-  // width: 80%;
+}
+.contributors {
+  vertical-align: top;
+  display: inline-block;
+  width: 40%;
+  min-width: 250px;
+  text-align: center;
+  padding-top: 20px;
 }
 
-.web-interface span {
+.contributors span {
   font-size: 80%;
 }
 
